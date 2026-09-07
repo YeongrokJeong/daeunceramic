@@ -89,7 +89,7 @@ export default async function WorkDetailPage({
           <div className="sm:sticky sm:top-6">
             <div className="mb-3 rounded-lg bg-[var(--color-bg-soft)] px-4 py-3 text-xs text-[var(--color-ink-soft)] leading-relaxed">
               <p>① 구매하기 → 이름/연락처 남기기</p>
-              <p>② 작가가 문자로 연락 → 마켓 현장에서 실물 확인 후 결제</p>
+              <p>② 작가가 문자로 연락 → 결제 안내 후 택배로 배송</p>
             </div>
             <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
           </div>
