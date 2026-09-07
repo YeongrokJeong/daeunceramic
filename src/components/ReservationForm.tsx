@@ -29,8 +29,6 @@ export default function ReservationForm({
         body: JSON.stringify({
           name: data.get("name"),
           phone: data.get("phone"),
-          quantity: data.get("quantity"),
-          message: data.get("message"),
           workSlug,
         }),
       });
@@ -103,35 +101,6 @@ export default function ReservationForm({
           pattern="^01[0-9]-?\d{3,4}-?\d{4}$"
           title="휴대폰 번호 형식으로 입력해주세요. 예) 010-1234-5678"
           className="w-full rounded-lg border border-[var(--color-line)] bg-[var(--color-card)] px-4 py-3 text-base outline-none focus:border-[var(--color-accent)] transition-colors"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="quantity" className="block text-sm font-medium mb-1.5">
-          수량
-        </label>
-        <input
-          id="quantity"
-          name="quantity"
-          type="number"
-          min={1}
-          max={20}
-          defaultValue={1}
-          className="w-full rounded-lg border border-[var(--color-line)] bg-[var(--color-card)] px-4 py-3 text-base outline-none focus:border-[var(--color-accent)] transition-colors"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-1.5">
-          전달하고 싶은 말 (선택)
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          maxLength={300}
-          rows={3}
-          placeholder="궁금한 점이나 요청사항을 남겨주세요."
-          className="w-full rounded-lg border border-[var(--color-line)] bg-[var(--color-card)] px-4 py-3 text-base outline-none focus:border-[var(--color-accent)] transition-colors resize-none"
         />
       </div>
 

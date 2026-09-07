@@ -35,11 +35,7 @@ function buildMessageText(input: ReservationInput) {
   return [
     "[이다은 도자기 판매예약]",
     `상품: ${input.workTitle}`,
-    `수량: ${input.quantity}개`,
     `이름: ${input.name}`,
     `연락처: ${input.phone}`,
-    input.message ? `메모: ${input.message}` : undefined,
-  ]
-    .filter(Boolean)
-    .join("\n");
+  ].join("\n");
 }
