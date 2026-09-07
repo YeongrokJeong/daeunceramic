@@ -7,14 +7,14 @@
      위계를 만듦 (색이 아니라 타이포그래피로 강조)
    - 박스/카드 배경 없이 여백과 구분선만으로 섹션을 나눔 */
 :root {
-  --color-bg: #fafaf9; /* 거의 순백. 따뜻한 베이지 톤 뺌 */
-  --color-bg-soft: #fafaf9;
+  --color-bg: #ffffff; /* 순백 */
+  --color-bg-soft: #ffffff;
   --color-ink: #141414; /* 거의 블랙 */
   --color-ink-soft: #8c8c8c; /* 뉴트럴 그레이. 캡션/보조정보용 */
   --color-accent: #141414;
   --color-accent-dark: #141414;
   --color-line: #e2e2e0; /* 아주 옅은 구분선 */
-  --color-card: #fafaf9;
+  --color-card: #ffffff;
 }
 
 @theme inline {

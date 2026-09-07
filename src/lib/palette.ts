@@ -4,14 +4,14 @@
 // 실제 사진으로 교체할 때는 WorkImage 컴포넌트의 img 태그만 살리면 됩니다.
 
 export const placeholderPalettes = [
-  ["#EDECE8", "#D6D4CD"],
-  ["#E3E2DD", "#C7C5BD"],
-  ["#DAD9D3", "#BAB8AF"],
-  ["#D1D0C9", "#ADABA1"],
-  ["#E7E6E1", "#CECCC4"],
-  ["#DCDBD5", "#C1BFB6"],
-  ["#D6D5CF", "#B4B2A8"],
-  ["#E0DFD9", "#C4C2B9"],
+  ["#EFEFEF", "#D6D6D6"],
+  ["#E6E6E6", "#C9C9C9"],
+  ["#DDDDDD", "#BCBCBC"],
+  ["#D4D4D4", "#AFAFAF"],
+  ["#EAEAEA", "#CFCFCF"],
+  ["#E0E0E0", "#C2C2C2"],
+  ["#D8D8D8", "#B5B5B5"],
+  ["#E3E3E3", "#C5C5C5"],
 ] as const;
 
 export function getPalette(index: number) {
