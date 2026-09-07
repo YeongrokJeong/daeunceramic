@@ -12,14 +12,14 @@ const NAV_LINKS = [
 export default function SiteHeader() {
   return (
     <header className="px-5 sm:px-8 py-5 sm:py-6 max-w-5xl mx-auto w-full border-b border-[var(--color-line)]">
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between sm:items-center">
         <Link href="/" className="leading-none">
           <span className="font-logo text-sm sm:text-base uppercase">
             Daeun Ceramic
           </span>
           <span className="block label-caption mt-1">CERAMICS / OBJECTS</span>
         </Link>
-        <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 pt-0.5 max-w-[9rem] sm:max-w-none">
+        <nav className="inline-grid grid-cols-2 gap-x-4 gap-y-1.5 justify-items-end sm:flex sm:gap-x-5">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
