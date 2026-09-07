@@ -40,12 +40,19 @@ export default async function WorkDetailPage({
         ← 목록으로
       </Link>
 
-      <div className="mt-4 rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10]">
+      <div className="relative mt-4 rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10]">
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}
-          className="h-full w-full"
+          className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
         />
+        {work.soldOut && (
+          <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
+            <span className="text-white text-base sm:text-lg tracking-[0.15em]">
+              SOLD OUT
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="mt-6 sm:mt-8 grid sm:grid-cols-5 gap-8 sm:gap-10">

@@ -46,9 +46,14 @@ export default function InfiniteGallery({ works }: { works: Work[] }) {
           </span>
         </div>
       ) : (
-        <p className="text-center text-sm text-[var(--color-ink-soft)] py-10">
-          모든 작품을 보셨어요 🏺
-        </p>
+        <div className="text-center py-14 border-t border-[var(--color-line)] mt-6">
+          <p className="text-sm text-[var(--color-ink)]">
+            모든 작품을 둘러보셨어요.
+          </p>
+          <p className="mt-1.5 text-xs text-[var(--color-ink-soft)] leading-relaxed">
+            새 작품은 준비되는 대로 이 페이지에 추가돼요.
+          </p>
+        </div>
       )}
     </div>
   );

@@ -28,6 +28,7 @@ export const works: Work[] = [
     dimensions: "지름 11cm x 높이 10cm",
     glaze: "백자유",
     paletteIndex: 0,
+    soldOut: true, // 데모: 품절 표시 확인용. 실제로 팔리기 전이면 지워주세요.
   },
   {
     id: "2",
