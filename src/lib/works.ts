@@ -14,9 +14,28 @@ export type Work = {
   glaze: string; // 유약/색감
   paletteIndex: number; // 플레이스홀더 그라디언트 선택용
   soldOut?: boolean;
+  material: string; // 재질
+  microwaveSafe: boolean; // 전자레인지 사용 가능 여부
+  dishwasherSafe: boolean; // 식기세척기 사용 가능 여부
+  careNote: string; // 사용/관리 주의사항
 };
 
-export const works: Work[] = [
+// 핸드메이드 도자기 전반에 적용되는 보수적인 기본값.
+// 작가님이 특정 작품에 대해 실제로 확인한 내용이 있으면 아래 works 배열에서
+// 해당 작품에 material/microwaveSafe/dishwasherSafe/careNote를 직접 덮어써주세요.
+const DEFAULT_MATERIAL = "도자기 (핸드메이드)";
+const DEFAULT_CARE_NOTE =
+  "급격한 온도 변화에 약해요. 전자레인지·식기세척기 사용은 권장하지 않으며, 중성세제로 부드럽게 손세척해주세요.";
+
+type WorkInput = Omit<
+  Work,
+  "material" | "microwaveSafe" | "dishwasherSafe" | "careNote"
+> &
+  Partial<
+    Pick<Work, "material" | "microwaveSafe" | "dishwasherSafe" | "careNote">
+  >;
+
+const rawWorks: WorkInput[] = [
   {
     id: "1",
     slug: "moon-jar-01",
@@ -199,6 +218,14 @@ export const works: Work[] = [
     paletteIndex: 7,
   },
 ];
+
+export const works: Work[] = rawWorks.map((w) => ({
+  material: DEFAULT_MATERIAL,
+  microwaveSafe: false,
+  dishwasherSafe: false,
+  careNote: DEFAULT_CARE_NOTE,
+  ...w,
+}));
 
 export function getWorkBySlug(slug: string): Work | undefined {
   return works.find((w) => w.slug === slug);
