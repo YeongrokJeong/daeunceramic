@@ -3,6 +3,15 @@
 // image는 placeholder.ts의 팔레트를 이용한 그라디언트 플레이스홀더입니다.
 // 실제 사진이 생기면 image 값을 "/works/파일명.jpg" (public/works 폴더) 형태로 바꾸세요.
 
+export const CATEGORIES = [
+  "CUPS & MUGS",
+  "BOWLS & PLATES",
+  "VASES & JARS",
+  "OBJECTS",
+] as const;
+
+export type Category = (typeof CATEGORIES)[number];
+
 export type Work = {
   id: string;
   slug: string;
@@ -13,6 +22,7 @@ export type Work = {
   dimensions: string; // e.g. "지름 12cm x 높이 8cm"
   glaze: string; // 유약/색감
   paletteIndex: number; // 플레이스홀더 그라디언트 선택용
+  category: Category; // 형태 기준 자동 분류 (COLLECTION 페이지 필터용)
   soldOut?: boolean;
   material: string; // 재질
   microwaveSafe: boolean; // 전자레인지 사용 가능 여부
@@ -47,6 +57,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 11cm x 높이 10cm",
     glaze: "백자유",
     paletteIndex: 0,
+    category: "VASES & JARS",
     soldOut: true, // 데모: 품절 표시 확인용. 실제로 팔리기 전이면 지워주세요.
   },
   {
@@ -60,6 +71,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 8cm x 높이 11cm",
     glaze: "무광 샌드베이지",
     paletteIndex: 1,
+    category: "CUPS & MUGS",
   },
   {
     id: "3",
@@ -72,6 +84,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 20cm x 높이 2.5cm",
     glaze: "오트밀 매트",
     paletteIndex: 2,
+    category: "BOWLS & PLATES",
   },
   {
     id: "4",
@@ -84,6 +97,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 10cm x 높이 18cm",
     glaze: "무유 소성",
     paletteIndex: 3,
+    category: "VASES & JARS",
   },
   {
     id: "5",
@@ -96,6 +110,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 12cm x 높이 6.5cm",
     glaze: "세이지 그린",
     paletteIndex: 4,
+    category: "BOWLS & PLATES",
   },
   {
     id: "6",
@@ -108,6 +123,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 8.5cm x 높이 9cm",
     glaze: "크림 화이트",
     paletteIndex: 5,
+    category: "CUPS & MUGS",
   },
   {
     id: "7",
@@ -120,6 +136,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "가로 14cm x 폭 3cm",
     glaze: "차콜 매트",
     paletteIndex: 6,
+    category: "OBJECTS",
   },
   {
     id: "8",
@@ -132,6 +149,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 14cm x 높이 2cm",
     glaze: "러스트 브라운",
     paletteIndex: 7,
+    category: "BOWLS & PLATES",
   },
   {
     id: "9",
@@ -144,6 +162,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 6cm x 높이 12cm",
     glaze: "백자유",
     paletteIndex: 0,
+    category: "VASES & JARS",
   },
   {
     id: "10",
@@ -156,6 +175,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 16cm x 높이 8cm",
     glaze: "모래빛 무광",
     paletteIndex: 1,
+    category: "BOWLS & PLATES",
   },
   {
     id: "11",
@@ -168,6 +188,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 6cm x 높이 5.5cm (2개)",
     glaze: "오트밀 매트",
     paletteIndex: 2,
+    category: "CUPS & MUGS",
   },
   {
     id: "12",
@@ -180,6 +201,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "가로 18cm x 세로 12cm x 높이 2cm",
     glaze: "무유 소성",
     paletteIndex: 3,
+    category: "OBJECTS",
   },
   {
     id: "13",
@@ -192,6 +214,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 7cm x 높이 6cm",
     glaze: "세이지 그린",
     paletteIndex: 4,
+    category: "OBJECTS",
   },
   {
     id: "14",
@@ -204,6 +227,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 8.5cm x 높이 9.5cm",
     glaze: "차콜 매트",
     paletteIndex: 6,
+    category: "CUPS & MUGS",
   },
   {
     id: "15",
@@ -216,6 +240,7 @@ const rawWorks: WorkInput[] = [
     dimensions: "지름 16cm x 높이 15cm",
     glaze: "백자유",
     paletteIndex: 7,
+    category: "VASES & JARS",
   },
 ];
 

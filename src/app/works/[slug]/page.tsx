@@ -34,14 +34,34 @@ export default async function WorkDetailPage({
   const work = getWorkBySlug(slug);
   if (!work) notFound();
 
+  const index = works.findIndex((w) => w.slug === slug);
+  const prev = works[(index - 1 + works.length) % works.length];
+  const next = works[(index + 1) % works.length];
+
   return (
     <main className="flex-1 max-w-3xl mx-auto w-full px-5 sm:px-8 py-6 sm:py-10 pb-28 sm:pb-16">
-      <Link
-        href="/"
-        className="label-caption hover:text-[var(--color-ink)] transition-colors"
-      >
-        ← BACK TO WORKS
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link
+          href="/collection"
+          className="label-caption hover:text-[var(--color-ink)] transition-colors"
+        >
+          ← BACK TO COLLECTION
+        </Link>
+        <div className="flex gap-4">
+          <Link
+            href={`/works/${prev.slug}`}
+            className="label-caption hover:text-[var(--color-ink)] transition-colors"
+          >
+            PREV
+          </Link>
+          <Link
+            href={`/works/${next.slug}`}
+            className="label-caption hover:text-[var(--color-ink)] transition-colors"
+          >
+            NEXT
+          </Link>
+        </div>
+      </div>
 
       <div className="mt-6 flex items-baseline justify-between">
         <h1 className="font-display text-2xl sm:text-3xl leading-snug">

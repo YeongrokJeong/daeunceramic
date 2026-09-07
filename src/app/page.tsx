@@ -1,9 +1,15 @@
-import InfiniteGallery from "@/components/InfiniteGallery";
+import Link from "next/link";
+import WorkCard from "@/components/WorkCard";
 import WorkImage from "@/components/WorkImage";
 import { works } from "@/lib/works";
 
+const SELECTED_COUNT = 4;
+
 export default function Home() {
   const hero = works[0];
+  const selected = works.slice(0, SELECTED_COUNT);
+  const objectsWork =
+    works.find((w) => w.category === "OBJECTS") ?? works[works.length - 1];
 
   return (
     <main className="flex-1">
@@ -33,29 +39,49 @@ export default function Home() {
           <p className="font-display text-lg">{hero.title}</p>
           <p className="label-caption mt-1">2026</p>
         </div>
-        <p className="label-caption">HANDMADE CERAMICS</p>
+        <Link
+          href={`/works/${hero.slug}`}
+          className="label-caption hover:text-[var(--color-ink)] transition-colors"
+        >
+          VIEW PROJECT →
+        </Link>
       </section>
 
-      <section className="px-5 sm:px-8 pt-10 pb-24 max-w-5xl mx-auto">
+      <section className="px-5 sm:px-8 pt-10 pb-16 max-w-5xl mx-auto">
         <div className="flex items-baseline justify-between">
           <p className="label-caption">SELECTED WORKS</p>
-          <p className="text-sm text-[var(--color-ink-soft)] max-w-[14rem] text-right leading-relaxed hidden sm:block">
-            손으로 빚은 도자기 작품들. 구매하기로 신청하시면 작가가 직접
-            연락드려요.
-          </p>
+          <Link
+            href="/collection"
+            className="label-caption hover:text-[var(--color-ink)] transition-colors"
+          >
+            SEE ALL →
+          </Link>
         </div>
-        <div className="mt-6">
-          <InfiniteGallery works={works} />
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-8 sm:gap-x-6">
+          {selected.map((work) => (
+            <WorkCard key={work.id} work={work} />
+          ))}
         </div>
       </section>
 
-      <footer className="px-5 sm:px-8 py-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-t border-[var(--color-line)]">
-        <div>
-          <p className="font-logo text-sm uppercase">Daeun Lee</p>
-          <p className="label-caption mt-1">CERAMICS / OBJECTS</p>
+      <section className="px-5 sm:px-8 py-16 max-w-5xl mx-auto border-t border-[var(--color-line)] grid sm:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="relative aspect-[4/5] sm:aspect-square overflow-hidden order-2 sm:order-1">
+          <WorkImage paletteIndex={objectsWork.paletteIndex} title="" className="h-full w-full" />
         </div>
-        <p className="label-caption">© 2026 DAEUN LEE. ALL RIGHTS RESERVED.</p>
-      </footer>
+        <div className="order-1 sm:order-2">
+          <p className="label-caption">OBJECTS</p>
+          <p className="mt-3 text-sm text-[var(--color-ink-soft)] leading-relaxed max-w-sm">
+            작품과 일상의 경계에 놓인 작은 기물들. 향꽂이, 트레이, 캔들홀더처럼
+            공간 곳곳에 스며드는 오브제를 모았습니다.
+          </p>
+          <Link
+            href="/collection"
+            className="mt-4 inline-block label-caption hover:text-[var(--color-ink)] transition-colors"
+          >
+            VIEW COLLECTION →
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }
