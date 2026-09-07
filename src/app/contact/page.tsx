@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CONTACT_EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/contact";
 
 export const metadata = {
@@ -16,30 +17,44 @@ export default function ContactPage() {
       <div className="mt-10 border-t border-[var(--color-line)]">
         <a
           href={`mailto:${CONTACT_EMAIL}`}
-          className="group flex items-center justify-between py-6 border-b border-[var(--color-line)]"
+          className="group flex items-center gap-4 py-6 border-b border-[var(--color-line)]"
         >
-          <div>
+          <Image
+            src="/icons/email.png"
+            alt=""
+            width={32}
+            height={32}
+            className="shrink-0"
+          />
+          <div className="flex-1 min-w-0">
             <p className="label-caption">EMAIL</p>
             <p className="font-display text-xl sm:text-2xl mt-1 group-hover:text-[var(--color-ink-soft)] transition-colors">
               {CONTACT_EMAIL}
             </p>
           </div>
-          <span className="label-caption shrink-0 ml-4">→</span>
+          <span className="label-caption shrink-0">→</span>
         </a>
 
         <a
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noreferrer"
-          className="group flex items-center justify-between py-6 border-b border-[var(--color-line)]"
+          className="group flex items-center gap-4 py-6 border-b border-[var(--color-line)]"
         >
-          <div>
+          <Image
+            src="/icons/instagram.png"
+            alt=""
+            width={32}
+            height={32}
+            className="shrink-0"
+          />
+          <div className="flex-1 min-w-0">
             <p className="label-caption">INSTAGRAM</p>
             <p className="font-display text-xl sm:text-2xl mt-1 group-hover:text-[var(--color-ink-soft)] transition-colors">
               {INSTAGRAM_HANDLE}
             </p>
           </div>
-          <span className="label-caption shrink-0 ml-4">→</span>
+          <span className="label-caption shrink-0">→</span>
         </a>
       </div>
 

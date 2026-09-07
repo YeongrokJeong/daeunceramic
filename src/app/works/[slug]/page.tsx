@@ -63,11 +63,10 @@ export default async function WorkDetailPage({
         </div>
       </div>
 
-      <div className="mt-6 flex items-baseline justify-between">
+      <div className="mt-6">
         <h1 className="font-display text-2xl sm:text-3xl leading-snug">
           {work.title}
         </h1>
-        <p className="label-caption shrink-0 ml-4">2026</p>
       </div>
 
       <ZoomableWorkImage work={work} />
@@ -82,20 +81,22 @@ export default async function WorkDetailPage({
             {work.description}
           </p>
 
-          <dl className="mt-8 space-y-2.5 text-sm border-t border-[var(--color-line)] pt-6">
-            <Spec label="가격" value={formatPrice(work.price)} />
-            <Spec label="크기" value={work.dimensions} />
-            <Spec label="유약" value={work.glaze} />
-            <Spec label="재질" value={work.material} />
-            <Spec
-              label="전자레인지"
-              value={work.microwaveSafe ? "사용 가능" : "사용 불가"}
-            />
-            <Spec
-              label="식기세척기"
-              value={work.dishwasherSafe ? "사용 가능" : "사용 불가"}
-            />
-          </dl>
+          <table className="mt-8 w-full text-sm border-t border-[var(--color-line)]">
+            <tbody>
+              <SpecRow label="가격" value={formatPrice(work.price)} />
+              <SpecRow label="크기" value={work.dimensions} />
+              <SpecRow label="유약" value={work.glaze} />
+              <SpecRow label="재질" value={work.material} />
+              <SpecRow
+                label="전자레인지"
+                value={work.microwaveSafe ? "사용 가능" : "사용 불가"}
+              />
+              <SpecRow
+                label="식기세척기"
+                value={work.dishwasherSafe ? "사용 가능" : "사용 불가"}
+              />
+            </tbody>
+          </table>
 
           <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed border-t border-[var(--color-line)] pt-6">
             {work.careNote}
@@ -109,9 +110,6 @@ export default async function WorkDetailPage({
             </p>
           </div>
 
-          <p className="mt-6 label-caption">
-            판매자: 이다은 (개인 작가)
-          </p>
         </div>
 
         {/* sm 이상: 사이드바에 고정 버튼. 모바일: 아래 fixed 바로 대체(다음 블록) */}
@@ -134,11 +132,16 @@ export default async function WorkDetailPage({
   );
 }
 
-function Spec({ label, value }: { label: string; value: string }) {
+function SpecRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex gap-4">
-      <dt className="w-24 shrink-0 label-caption">{label}</dt>
-      <dd>{value}</dd>
-    </div>
+    <tr className="border-b border-[var(--color-line)]">
+      <th
+        scope="row"
+        className="label-caption text-left font-normal align-top w-24 sm:w-28 py-2.5 pr-4"
+      >
+        {label}
+      </th>
+      <td className="align-top py-2.5">{value}</td>
+    </tr>
   );
 }
