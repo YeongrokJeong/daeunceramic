@@ -12,6 +12,14 @@ export default function WorkCard({ work }: { work: Work }) {
   return (
     <Link
       href={`/works/${work.slug}`}
+      data-work-slug={work.slug}
+      onClick={() => {
+        try {
+          sessionStorage.setItem("lastViewedWorkSlug", work.slug);
+        } catch {
+          // 세션 스토리지 접근 불가(프라이빗 모드 등)해도 무시하고 진행
+        }
+      }}
       className="group flex items-stretch gap-3 py-3 sm:block sm:gap-0 sm:py-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
     >
       <div className="relative w-28 h-28 shrink-0 sm:w-full sm:h-auto sm:aspect-square overflow-hidden rounded-md bg-[var(--color-bg-soft)]">

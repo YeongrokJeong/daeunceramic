@@ -37,7 +37,7 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 px-0 sm:px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -47,7 +47,7 @@ export default function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full sm:max-w-sm rounded-t-2xl sm:rounded-2xl bg-[var(--color-card)] p-5 sm:p-6 animate-in"
+        className="w-full max-w-sm rounded-2xl bg-[var(--color-card)] p-5 sm:p-6 animate-in"
       >
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-medium">{title}</h2>
