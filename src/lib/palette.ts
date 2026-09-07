@@ -3,15 +3,16 @@
 // 예전의 테라코타 웜톤 대신 그레이스케일 중심 8단계로 바꿈.
 // 실제 사진으로 교체할 때는 WorkImage 컴포넌트의 img 태그만 살리면 됩니다.
 
+// 살짝 쿨톤(블루그레이)을 섞어 화면에 따라 누렇게 보이는 걸 방지.
 export const placeholderPalettes = [
-  ["#EFEFEF", "#D6D6D6"],
-  ["#E6E6E6", "#C9C9C9"],
-  ["#DDDDDD", "#BCBCBC"],
-  ["#D4D4D4", "#AFAFAF"],
-  ["#EAEAEA", "#CFCFCF"],
-  ["#E0E0E0", "#C2C2C2"],
-  ["#D8D8D8", "#B5B5B5"],
-  ["#E3E3E3", "#C5C5C5"],
+  ["#F1F2F3", "#DCDEE1"],
+  ["#EBECEE", "#D2D4D8"],
+  ["#E5E6E9", "#C8CACF"],
+  ["#DFE1E4", "#BEC0C6"],
+  ["#EEEFF1", "#D7D9DC"],
+  ["#E8E9EB", "#CDCFD3"],
+  ["#E2E3E6", "#C3C5CA"],
+  ["#ECEDEF", "#D4D6D9"],
 ] as const;
 
 export function getPalette(index: number) {
