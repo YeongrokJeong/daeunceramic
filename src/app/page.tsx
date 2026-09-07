@@ -13,13 +13,12 @@ export default function Home() {
 
   return (
     <main className="flex-1">
-      {/* 히어로: 레퍼런스처럼 사진 위에 짧은 헤드라인을 얹는 구성.
-          실제 촬영 사진이 없어 플레이스홀더 그라디언트를 대신 씀 —
-          실제 사진이 생기면 WorkImage 대신 <img>로 교체하면 된다. */}
+      {/* 히어로: 레퍼런스처럼 사진 위에 짧은 헤드라인을 얹는 구성. */}
       <section className="relative">
         <WorkImage
           paletteIndex={hero.paletteIndex}
           title={hero.title}
+          image={hero.image}
           className="h-[62vh] sm:h-[70vh] w-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
@@ -66,13 +65,18 @@ export default function Home() {
 
       <section className="px-5 sm:px-8 py-16 max-w-5xl mx-auto border-t border-[var(--color-line)] grid sm:grid-cols-2 gap-8 sm:gap-12 items-center">
         <div className="relative aspect-[4/5] sm:aspect-square overflow-hidden order-2 sm:order-1">
-          <WorkImage paletteIndex={objectsWork.paletteIndex} title="" className="h-full w-full" />
+          <WorkImage
+            paletteIndex={objectsWork.paletteIndex}
+            title={objectsWork.title}
+            image={objectsWork.image}
+            className="h-full w-full"
+          />
         </div>
         <div className="order-1 sm:order-2">
           <p className="label-caption">OBJECTS</p>
           <p className="mt-3 text-sm text-[var(--color-ink-soft)] leading-relaxed max-w-sm">
-            작품과 일상의 경계에 놓인 작은 기물들. 향꽂이, 트레이, 캔들홀더처럼
-            공간 곳곳에 스며드는 오브제를 모았습니다.
+            컵, 잔, 접시가 한데 어우러진 세트 구성. 함께 두면 더 완성도
+            있는 테이블을 만들어주는 작품들을 모았습니다.
           </p>
           <Link
             href="/collection"

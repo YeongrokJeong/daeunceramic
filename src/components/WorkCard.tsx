@@ -31,6 +31,7 @@ export default function WorkCard({
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}
+          image={work.image}
           className={`h-full w-full transition-transform duration-500 group-hover:scale-[1.02] ${
             work.soldOut ? "grayscale" : ""
           }`}

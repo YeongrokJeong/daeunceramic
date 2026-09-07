@@ -74,6 +74,7 @@ export default async function WorkDetailPage({
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}
+          image={work.image}
           className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
         />
         {work.soldOut && (

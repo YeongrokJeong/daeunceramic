@@ -47,3 +47,4 @@ next-env.d.ts
 # AI assistant skill files (local tooling only, not part of the site)
 .claude/
 scratch_shot/
+제품사진들/

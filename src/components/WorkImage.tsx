@@ -1,16 +1,32 @@
+import Image from "next/image";
 import { getPalette } from "@/lib/palette";
 
-// 실제 사진이 없을 때 쓰는 플레이스홀더.
-// 나중에 사진이 준비되면 이 컴포넌트를 <img src={work.image} ... /> 로 교체하면 됩니다.
+// 실제 사진(work.image)이 있으면 그 사진을, 없으면 그라디언트 플레이스홀더를 보여준다.
 export default function WorkImage({
   paletteIndex,
   title,
+  image,
   className,
 }: {
   paletteIndex: number;
   title: string;
+  image?: string;
   className?: string;
 }) {
+  if (image) {
+    return (
+      <div className={`relative overflow-hidden ${className ?? ""}`}>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(min-width: 640px) 33vw, 50vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   const [from, to] = getPalette(paletteIndex);
   return (
     <div
