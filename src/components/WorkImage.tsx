@@ -6,22 +6,30 @@ export default function WorkImage({
   paletteIndex,
   title,
   image,
+  fit = "contain",
   className,
 }: {
   paletteIndex: number;
   title: string;
   image?: string;
+  fit?: "contain" | "cover";
   className?: string;
 }) {
   if (image) {
+    // 상품 사진은 비율이 제각각이라 object-cover로 채우면 좌우/상하가 잘린다.
+    // 카드/상세페이지는 object-contain으로 전체 제품이 보이게 하고, 남는
+    // 여백은 배경색으로 채운다(레터박스). 히어로 배너처럼 잘려도 괜찮은
+    // 곳만 fit="cover"로 넘긴다.
     return (
-      <div className={`relative overflow-hidden ${className ?? ""}`}>
+      <div
+        className={`relative overflow-hidden bg-[var(--color-bg-soft)] ${className ?? ""}`}
+      >
         <Image
           src={image}
           alt={title}
           fill
           sizes="(min-width: 640px) 33vw, 50vw"
-          className="object-cover"
+          className={fit === "cover" ? "object-cover" : "object-contain"}
         />
       </div>
     );

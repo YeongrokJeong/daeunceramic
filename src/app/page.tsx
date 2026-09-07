@@ -19,6 +19,7 @@ export default function Home() {
           paletteIndex={hero.paletteIndex}
           title={hero.title}
           image={hero.image}
+          fit="cover"
           className="h-[62vh] sm:h-[70vh] w-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
