@@ -43,3 +43,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# AI assistant skill files (local tooling only, not part of the site)
+.claude/
