@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import "./globals.css";
 
 const sans = Noto_Sans_KR({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        <ScrollToTopButton />
       </body>
     </html>
   );
