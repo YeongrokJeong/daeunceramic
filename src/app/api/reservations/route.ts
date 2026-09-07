@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { insertReservation } from "@/lib/db";
+import { insertReservation, DuplicateReservationError } from "@/lib/db";
 import { sendReservationSms } from "@/lib/solapi";
 import { getWorkBySlug } from "@/lib/works";
 
@@ -49,6 +49,16 @@ export async function POST(request: Request) {
   try {
     await insertReservation(reservationInput);
   } catch (err) {
+    if (err instanceof DuplicateReservationError) {
+      // 1점 한정 작품이라 이미 다른 사람이 먼저 신청한 경우. 오버셀 방지.
+      return NextResponse.json(
+        {
+          error:
+            "죄송해요, 방금 다른 분이 먼저 이 작품을 신청하셨어요. 다른 작품을 확인해주세요.",
+        },
+        { status: 409 }
+      );
+    }
     console.error("[reservations] DB insert failed", err);
     return NextResponse.json(
       { error: "예약 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요." },

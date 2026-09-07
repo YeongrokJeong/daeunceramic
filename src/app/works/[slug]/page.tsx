@@ -60,7 +60,14 @@ export default async function WorkDetailPage({
           <h1 className="font-display text-2xl sm:text-3xl leading-snug">
             {work.title}
           </h1>
-          <p className="mt-2 text-xl font-medium">{formatPrice(work.price)}</p>
+          <div className="mt-2 flex items-center gap-2">
+            <p className="text-xl font-medium">{formatPrice(work.price)}</p>
+            {!work.soldOut && (
+              <span className="text-xs text-[var(--color-accent)] border border-[var(--color-accent)] rounded px-1.5 py-0.5">
+                1점 한정
+              </span>
+            )}
+          </div>
 
           <p className="mt-5 text-[15px] leading-relaxed text-[var(--color-ink)]">
             {work.description}
@@ -80,10 +87,11 @@ export default async function WorkDetailPage({
 
         <div className="sm:col-span-2">
           <div className="sm:sticky sm:top-6">
+            <div className="mb-3 rounded-lg bg-[var(--color-bg-soft)] px-4 py-3 text-xs text-[var(--color-ink-soft)] leading-relaxed">
+              <p>① 구매하기 → 이름/연락처 남기기</p>
+              <p>② 작가가 문자로 연락 → 마켓 현장에서 실물 확인 후 결제</p>
+            </div>
             <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
-            <p className="mt-3 text-xs text-[var(--color-ink-soft)] text-center leading-relaxed">
-              구매하기를 누르면 이름/연락처를 남기고, 작가가 직접 연락드려요.
-            </p>
           </div>
         </div>
       </div>
