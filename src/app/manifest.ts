@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "이다은 작가의 도자기 작품 판매예약 페이지",
     start_url: "/",
     display: "standalone",
-    background_color: "#F7F0E7",
-    theme_color: "#F7F0E7",
+    background_color: "#FFFFFF",
+    theme_color: "#FFFFFF",
     icons: [],
   };
 }

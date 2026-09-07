@@ -1,32 +1,26 @@
 @import "tailwindcss";
 
-/* 이다은 도자기 — 웜톤 미니멀 디자인 시스템
-   UI/UX Pro Max 스킬의 "Nature Distilled" 스타일(흙/유약/자연 소재 모티브,
-   "artisan goods, handmade warmth"에 매칭됨)의 공식 팔레트를 기반으로 함:
-   --terracotta:#C67B5C --sand-beige:#D4C4A8 --warm-clay:#B5651D
-   --soft-cream:#F5F0E1 --olive-green:#6B7B3C
-   단, CTA 버튼의 흰 글자 대비가 스킬 체크리스트 기준(4.5:1)에 못 미쳐
-   --color-accent만 진한 톤으로 보정함(대비 6:1).
-   라이트 테마 고정(임시 판매 사이트, 다크모드 불필요). */
+/* 이다은 도자기 — 실제 국내 도자기/편집샵 3곳
+   (yosogallery.com / mallhankook.com / bluemingshadow.cafe24.com)의
+   CSS를 직접 뜯어본 결과를 기준으로 재설계함:
+   - 배경은 흰색, 텍스트는 브라운이 아니라 블랙~그레이 무채색
+   - 색은 테마 전체가 아니라 버튼 등 "포인트 하나"에만 절제해서 사용
+   - 폰트는 담백한 산세리프 하나로 통일 (세리프/장식 최소화)
+   테라코타는 브랜드 포인트로 CTA 버튼에만 남겨둠(대비 6:1, a11y 통과). */
 :root {
-  --color-bg: #f5f0e1; /* soft-cream */
-  --color-bg-soft: #d4c4a8; /* sand-beige */
-  --color-ink: #362a22; /* 짙은 흙색 텍스트 */
-  --color-ink-soft: #4a3d33; /* 보조 텍스트. sand-beige 배경 위에서도 4.5:1 넘도록 보정 */
-  --color-accent: #9c4b2e; /* terracotta를 CTA 대비 기준(4.5:1)에 맞게 보정 */
-  --color-accent-dark: #7a3a22; /* hover, 더 진하게 */
-  --color-terracotta: #c67b5c; /* 장식용 원본 terracotta (흰 글자 X) */
-  --color-clay: #b5651d; /* warm-clay, 보조 포인트 */
-  --color-sage: #6b7b3c; /* olive-green */
-  --color-line: #c3ae8c; /* sand-beige 계열 구분선 */
-  --color-card: #fffaf3;
-  --grain-opacity: 0.05;
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f6f4; /* 카드/섹션 배경. 무채색에 아주 가깝게 */
+  --color-ink: #1a1a1a; /* 블랙에 가까운 텍스트 */
+  --color-ink-soft: #6b6b6b; /* 보조 텍스트, 그레이 */
+  --color-accent: #9c4b2e; /* 브랜드 포인트(테라코타), CTA에만 사용 */
+  --color-accent-dark: #7a3a22; /* hover */
+  --color-line: #e5e3df; /* 구분선, 옅은 그레이 */
+  --color-card: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--color-bg);
   --color-foreground: var(--color-ink);
-  --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
 
@@ -38,24 +32,14 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans), "Pretendard", -apple-system, sans-serif;
-  position: relative;
 }
 
-/* Nature Distilled 스타일의 "grain effects/texture overlays" 가이드를 따른
-   아주 은은한 종이 질감 오버레이. 클릭 방해 없도록 pointer-events:none. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: var(--grain-opacity);
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
+/* 브랜드/작품명 등 강조 텍스트. 세리프 대신 굵은 산세리프 + 타이트한 자간으로
+   레퍼런스 사이트들의 담백한 갤러리 톤을 따라감. */
 .font-display {
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-sans), "Pretendard", -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -58,7 +58,7 @@ export default function ReservationForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-[var(--color-sage)] bg-[var(--color-bg-soft)] p-6 text-center">
+      <div className="rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)] p-6 text-center">
         <p className="font-display text-lg">예약 신청이 완료되었어요 🌿</p>
         <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
           작가님이 남겨주신 연락처로 곧 연락드릴게요.
