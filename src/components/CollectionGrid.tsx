@@ -53,7 +53,7 @@ export default function CollectionGrid({ works }: { works: Work[] }) {
 
       <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8 sm:gap-x-8 sm:gap-y-10">
         {visible.map((work) => (
-          <WorkCard key={work.id} work={work} hidePrice />
+          <WorkCard key={work.id} work={work} />
         ))}
       </div>
 
