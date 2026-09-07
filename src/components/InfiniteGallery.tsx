@@ -68,25 +68,21 @@ export default function InfiniteGallery({ works }: { works: Work[] }) {
 
   return (
     <div>
-      <div className="flex flex-col divide-y divide-[var(--color-line)] sm:grid sm:grid-cols-3 md:grid-cols-4 sm:divide-y-0 gap-x-4 sm:gap-y-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8 sm:gap-x-8 sm:gap-y-10">
         {visible.map((work) => (
           <WorkCard key={work.id} work={work} />
         ))}
       </div>
 
       {hasMore ? (
-        <div ref={sentinelRef} className="flex justify-center py-10">
-          <span className="text-sm text-[var(--color-ink-soft)]">
-            작품을 불러오는 중...
-          </span>
+        <div ref={sentinelRef} className="flex justify-center py-12">
+          <span className="label-caption">LOADING</span>
         </div>
       ) : (
-        <div className="text-center py-14 border-t border-[var(--color-line)] mt-6">
-          <p className="text-sm text-[var(--color-ink)]">
-            모든 작품을 둘러보셨어요.
-          </p>
-          <p className="mt-1.5 text-xs text-[var(--color-ink-soft)] leading-relaxed">
-            새 작품은 준비되는 대로 이 페이지에 추가돼요.
+        <div className="text-center py-16 border-t border-[var(--color-line)] mt-10">
+          <p className="text-sm">모든 작품을 둘러보셨어요.</p>
+          <p className="mt-2 label-caption">
+            새 작품은 준비되는 대로 추가돼요
           </p>
         </div>
       )}

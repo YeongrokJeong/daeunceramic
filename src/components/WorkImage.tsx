@@ -32,14 +32,14 @@ export default function WorkImage({
         >
           <path
             d="M18 46c0-10 4-14 14-14s14 4 14 14"
-            stroke="#3A2E28"
+            stroke="#1c1c1c"
             strokeWidth="2"
             strokeLinecap="round"
           />
           <ellipse cx="32" cy="46" rx="18" ry="4" stroke="#3A2E28" strokeWidth="2" />
           <path
             d="M20 32c0-9 5.4-16 12-16s12 7 12 16"
-            stroke="#3A2E28"
+            stroke="#1c1c1c"
             strokeWidth="2"
             strokeLinecap="round"
           />

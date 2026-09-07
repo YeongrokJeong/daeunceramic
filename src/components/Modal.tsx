@@ -47,10 +47,10 @@ export default function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full max-w-sm rounded-2xl bg-[var(--color-card)] p-5 sm:p-6 animate-in"
+        className="w-full max-w-sm bg-[var(--color-bg)] p-6 sm:p-8 animate-in"
       >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-medium">{title}</h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="font-display text-lg">{title}</h2>
           <button
             type="button"
             onClick={onClose}

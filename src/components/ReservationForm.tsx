@@ -44,7 +44,7 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)] p-6 text-center">
+      <div className="text-center py-4">
         <p className="font-display text-lg">구매 신청이 완료되었어요</p>
         <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
           작가님이 남겨주신 연락처로 곧 연락드릴게요.
@@ -56,9 +56,9 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-1.5">
+        <label htmlFor="name" className="block label-caption mb-2">
           이름
         </label>
         <input
@@ -68,12 +68,12 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
           maxLength={50}
           autoComplete="name"
           placeholder="홍길동"
-          className="w-full rounded-lg border border-[var(--color-line)] bg-[var(--color-card)] px-4 py-3 text-base outline-none focus:border-[var(--color-accent)] transition-colors"
+          className="w-full border-b border-[var(--color-line)] bg-transparent py-2 text-base outline-none focus:border-[var(--color-ink)] transition-colors"
         />
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium mb-1.5">
+        <label htmlFor="phone" className="block label-caption mb-2">
           휴대폰 번호
         </label>
         <input
@@ -86,7 +86,7 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
           placeholder="010-1234-5678"
           pattern="^01[0-9]-?\d{3,4}-?\d{4}$"
           title="휴대폰 번호 형식으로 입력해주세요. 예) 010-1234-5678"
-          className="w-full rounded-lg border border-[var(--color-line)] bg-[var(--color-card)] px-4 py-3 text-base outline-none focus:border-[var(--color-accent)] transition-colors"
+          className="w-full border-b border-[var(--color-line)] bg-transparent py-2 text-base outline-none focus:border-[var(--color-ink)] transition-colors"
         />
       </div>
 
@@ -99,7 +99,7 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] disabled:opacity-60 text-white font-normal py-3.5 text-base transition-colors cursor-pointer"
+        className="w-full border border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] disabled:opacity-50 py-3.5 text-sm tracking-wide transition-colors cursor-pointer mt-2"
       >
         {status === "submitting" ? "신청 중..." : "신청하기"}
       </button>

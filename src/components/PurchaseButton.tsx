@@ -4,7 +4,8 @@ import { useState } from "react";
 import Modal from "@/components/Modal";
 import ReservationForm from "@/components/ReservationForm";
 
-// "구매하기" 버튼. 누르면 작은 창(모달)이 뜨고 그 안에서 이름/연락처를 입력한다.
+// "구매하기" 버튼. 레퍼런스의 "INQUIRE ABOUT THIS PIECE" 버튼처럼 색 채움 없이
+// 테두리만 있다가 hover 시 반전(채움)되는 절제된 스타일.
 export default function PurchaseButton({
   workSlug,
   soldOut,
@@ -19,9 +20,9 @@ export default function PurchaseButton({
       <button
         type="button"
         disabled
-        className="w-full rounded-lg bg-[var(--color-bg-soft)] text-[var(--color-ink-soft)] font-normal py-3.5 text-base cursor-not-allowed"
+        className="w-full border border-[var(--color-line)] text-[var(--color-ink-soft)] py-3.5 text-sm tracking-wide cursor-not-allowed"
       >
-        품절되었습니다
+        SOLD OUT
       </button>
     );
   }
@@ -31,9 +32,9 @@ export default function PurchaseButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="w-full rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] text-white font-normal py-3.5 text-base transition-colors cursor-pointer"
+        className="w-full border border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] py-3.5 text-sm tracking-wide transition-colors cursor-pointer"
       >
-        구매하기
+        구매하기 →
       </button>
 
       <Modal open={open} onClose={() => setOpen(false)} title="구매하기">

@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
-/* 이다은 도자기 — 실제 국내 도자기/편집샵 3곳
-   (yosogallery.com / mallhankook.com / bluemingshadow.cafe24.com)의
-   CSS를 직접 뜯어본 결과를 기준으로 재설계함:
-   - 배경은 흰색, 텍스트는 브라운이 아니라 블랙~그레이 무채색
-   - 색은 테마 전체가 아니라 버튼 등 "포인트 하나"에만 절제해서 사용
-   - 폰트는 담백한 산세리프 하나로 통일 (세리프/장식 최소화)
-   테라코타는 브랜드 포인트로 CTA 버튼에만 남겨둠(대비 6:1, a11y 통과). */
+/* 이다은 도자기 — 사용자가 공유한 "DAEUN LEE" 갤러리형 포트폴리오
+   레퍼런스를 기준으로 전면 재설계:
+   - 색은 거의 없음. 오프화이트 배경 + 차콜 텍스트 두 톤이 전부
+   - 큰 세리프 제목 vs 아주 작은 트래킹된 산세리프 라벨의 극단적 크기 대비로
+     위계를 만듦 (색이 아니라 타이포그래피로 강조)
+   - 박스/카드 배경 없이 여백과 구분선만으로 섹션을 나눔 */
 :root {
-  --color-bg: #ffffff;
-  --color-bg-soft: #f7f6f4; /* 카드/섹션 배경. 무채색에 아주 가깝게 */
-  --color-ink: #1a1a1a; /* 블랙에 가까운 텍스트 */
-  --color-ink-soft: #6b6b6b; /* 보조 텍스트, 그레이 */
-  --color-accent: #9c4b2e; /* 브랜드 포인트(테라코타), CTA에만 사용 */
-  --color-accent-dark: #7a3a22; /* hover */
-  --color-line: #e5e3df; /* 구분선, 옅은 그레이 */
-  --color-card: #ffffff;
+  --color-bg: #f6f5f1; /* 따뜻한 오프화이트 */
+  --color-bg-soft: #f6f5f1; /* 별도 카드색 없음. bg와 동일하게 두어 박스 느낌 제거 */
+  --color-ink: #1c1c1c; /* 차콜(완전 블랙 아님) */
+  --color-ink-soft: #8a8a85; /* 웜 그레이. 캡션/보조정보용 */
+  --color-accent: #1c1c1c; /* 포인트 컬러 없음. CTA도 무채색으로 통일 */
+  --color-accent-dark: #1c1c1c;
+  --color-line: #e4e3df; /* 아주 옅은 구분선 */
+  --color-card: #f6f5f1;
 }
 
 @theme inline {
   --color-background: var(--color-bg);
   --color-foreground: var(--color-ink);
   --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
 html {
@@ -34,12 +34,19 @@ body {
   font-family: var(--font-sans), "Pretendard", -apple-system, sans-serif;
 }
 
-/* 브랜드/작품명 등 강조 텍스트. 세리프 대신 굵은 산세리프 + 타이트한 자간으로
-   레퍼런스 사이트들의 담백한 갤러리 톤을 따라감. */
+/* 로고, 페이지 대제목, 작품명 등 브랜드 타이포. 세리프 + 넓은 자간으로
+   레퍼런스의 에디토리얼/갤러리 톤을 따라감. */
 .font-display {
-  font-family: var(--font-sans), "Pretendard", -apple-system, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* 내비게이션, 캡션, 라벨 등. 작게 + 트래킹 넓게 + 그레이로 위계를 낮춤. */
+.label-caption {
+  font-size: 0.6875rem; /* 11px */
+  letter-spacing: 0.12em;
+  color: var(--color-ink-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {
