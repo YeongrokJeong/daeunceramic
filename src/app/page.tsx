@@ -4,21 +4,14 @@ import { works } from "@/lib/works";
 export default function Home() {
   return (
     <main className="flex-1">
-      <header className="px-5 sm:px-8 pt-12 pb-8 sm:pt-20 sm:pb-12 max-w-5xl mx-auto text-center">
-        <p className="text-sm tracking-[0.2em] text-[var(--color-ink-soft)] uppercase">
-          Da-eun Ceramic
-        </p>
-        <h1 className="font-display text-3xl sm:text-5xl mt-3 leading-tight">
-          이다은 도자기
-        </h1>
-        <p className="mt-4 text-[var(--color-ink-soft)] text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-          손으로 빚은 그릇과 화병들입니다. 마음에 드는 작품을 둘러보고
-          <br className="hidden sm:block" />
-          &lsquo;예약하기&rsquo;로 신청해주시면 직접 연락드릴게요.
+      <header className="px-3 sm:px-8 pt-4 pb-3 sm:pt-10 sm:pb-6 max-w-5xl mx-auto">
+        <h1 className="text-base sm:text-2xl font-normal">이다은 도자기</h1>
+        <p className="mt-0.5 text-xs sm:text-sm text-[var(--color-ink-soft)]">
+          예약하기로 신청하시면 작가가 직접 연락드려요.
         </p>
       </header>
 
-      <section className="px-5 sm:px-8 pb-24 max-w-5xl mx-auto">
+      <section className="px-3 sm:px-8 pb-24 max-w-5xl mx-auto">
         <InfiniteGallery works={works} />
       </section>
 
