@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import WorkImage from "@/components/WorkImage";
 import type { Work } from "@/lib/works";
 
 // 상세페이지 메인 사진 전용: 클릭하면 전체화면으로 확대해서 볼 수 있다.
+// 카드/리스트용 정사각 패딩 사진 대신, 여백 없는 원본 비율 detailImage를
+// 써서 사진 위아래(또는 좌우)에 불필요한 흰 여백이 생기지 않도록 한다.
 // 모바일 뒤로가기(popstate)를 눌렀을 때 상세페이지 자체를 벗어나지 않고
 // 라이트박스만 닫히도록 히스토리에 상태를 하나 쌓아둔다.
 export default function ZoomableWorkImage({ work }: { work: Work }) {
@@ -48,20 +51,36 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
+  const hasDetailImage =
+    work.detailImage && work.detailWidth && work.detailHeight;
+
   return (
     <>
       <button
         type="button"
         onClick={openLightbox}
         aria-label="사진 확대해서 보기"
-        className="relative mt-5 aspect-square w-full overflow-hidden cursor-zoom-in block"
+        className="relative mt-5 w-full overflow-hidden cursor-zoom-in block"
       >
-        <WorkImage
-          paletteIndex={work.paletteIndex}
-          title={work.title}
-          image={work.image}
-          className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
-        />
+        {hasDetailImage ? (
+          <Image
+            src={work.detailImage!}
+            alt={work.title}
+            width={work.detailWidth}
+            height={work.detailHeight}
+            sizes="(min-width: 640px) 640px, 100vw"
+            className={`w-full h-auto ${work.soldOut ? "grayscale" : ""}`}
+          />
+        ) : (
+          <div className="relative aspect-square w-full">
+            <WorkImage
+              paletteIndex={work.paletteIndex}
+              title={work.title}
+              image={work.image}
+              className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
+            />
+          </div>
+        )}
         {work.soldOut && (
           <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
             <span className="text-white text-sm tracking-[0.2em]">
@@ -93,7 +112,7 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
             <WorkImage
               paletteIndex={work.paletteIndex}
               title={work.title}
-              image={work.image}
+              image={work.detailImage ?? work.image}
               className="h-full w-full"
             />
           </div>

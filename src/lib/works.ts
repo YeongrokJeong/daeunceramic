@@ -22,7 +22,10 @@ export type Work = {
   dimensions: string; // e.g. "지름 12cm x 높이 8cm"
   glaze: string; // 유약/색감
   paletteIndex: number; // image가 없을 때 쓰는 플레이스홀더 그라디언트 선택용
-  image?: string; // public/ 기준 실제 상품 사진 경로
+  image?: string; // public/ 기준 실제 상품 사진 경로 (카드/리스트용 정사각 패딩 버전)
+  detailImage?: string; // 상세페이지용 원본 비율 사진(여백 없음)
+  detailWidth?: number; // detailImage의 실제 픽셀 가로
+  detailHeight?: number; // detailImage의 실제 픽셀 세로
   category: Category; // 형태 기준 자동 분류 (COLLECTION 페이지 필터용)
   soldOut?: boolean;
   material: string; // 재질
@@ -59,6 +62,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (라벤더 톤)",
     paletteIndex: 0,
     image: "/works/product-01.jpg",
+    detailImage: "/works/product-01-detail.jpg",
+    detailWidth: 900,
+    detailHeight: 1600,
     category: "CUPS & MUGS",
   },
   {
@@ -73,6 +79,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (그레이 톤)",
     paletteIndex: 1,
     image: "/works/product-02.jpg",
+    detailImage: "/works/product-02-detail.jpg",
+    detailWidth: 900,
+    detailHeight: 1600,
     category: "CUPS & MUGS",
   },
   {
@@ -87,6 +96,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (그레이 톤)",
     paletteIndex: 2,
     image: "/works/product-03.jpg",
+    detailImage: "/works/product-03-detail.jpg",
+    detailWidth: 900,
+    detailHeight: 1600,
     category: "OBJECTS",
   },
   {
@@ -101,6 +113,9 @@ const rawWorks: WorkInput[] = [
     glaze: "청화 (코발트 안료)",
     paletteIndex: 3,
     image: "/works/product-04.jpg",
+    detailImage: "/works/product-04-detail.jpg",
+    detailWidth: 1512,
+    detailHeight: 1512,
     category: "BOWLS & PLATES",
   },
   {
@@ -115,6 +130,9 @@ const rawWorks: WorkInput[] = [
     glaze: "청화 (코발트 안료)",
     paletteIndex: 4,
     image: "/works/product-05.jpg",
+    detailImage: "/works/product-05-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1600,
     category: "BOWLS & PLATES",
   },
   {
@@ -129,6 +147,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (블루 톤)",
     paletteIndex: 5,
     image: "/works/product-07.jpg",
+    detailImage: "/works/product-07-detail.jpg",
+    detailWidth: 1512,
+    detailHeight: 1512,
     category: "VASES & JARS",
   },
   {
@@ -143,6 +164,9 @@ const rawWorks: WorkInput[] = [
     glaze: "청화 (코발트 안료)",
     paletteIndex: 6,
     image: "/works/product-08.jpg",
+    detailImage: "/works/product-08-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1067,
     category: "BOWLS & PLATES",
   },
   {
@@ -157,6 +181,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (파스텔 톤)",
     paletteIndex: 7,
     image: "/works/product-09.jpg",
+    detailImage: "/works/product-09-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1067,
     category: "CUPS & MUGS",
   },
   {
@@ -171,6 +198,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 + 블루 라인",
     paletteIndex: 0,
     image: "/works/product-10.jpg",
+    detailImage: "/works/product-10-detail.jpg",
+    detailWidth: 1572,
+    detailHeight: 1047,
     category: "BOWLS & PLATES",
   },
   {
@@ -185,6 +215,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약",
     paletteIndex: 1,
     image: "/works/product-11.jpg",
+    detailImage: "/works/product-11-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1066,
     category: "OBJECTS",
   },
   {
@@ -199,6 +232,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (라이트 그레이)",
     paletteIndex: 2,
     image: "/works/product-13.jpg",
+    detailImage: "/works/product-13-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1066,
     category: "CUPS & MUGS",
   },
   {
@@ -212,6 +248,9 @@ const rawWorks: WorkInput[] = [
     glaze: "마블 유약 (틸·차콜 톤)",
     paletteIndex: 3,
     image: "/works/product-14.jpg",
+    detailImage: "/works/product-14-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1066,
     category: "CUPS & MUGS",
   },
   {
@@ -226,6 +265,9 @@ const rawWorks: WorkInput[] = [
     glaze: "청화 (코발트 안료)",
     paletteIndex: 4,
     image: "/works/product-15.jpg",
+    detailImage: "/works/product-15-detail.jpg",
+    detailWidth: 1600,
+    detailHeight: 1067,
     category: "BOWLS & PLATES",
   },
 ];
