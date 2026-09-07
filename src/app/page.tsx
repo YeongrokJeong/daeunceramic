@@ -65,7 +65,7 @@ export default function Home() {
       </section>
 
       <section className="px-5 sm:px-8 py-16 max-w-5xl mx-auto border-t border-[var(--color-line)] grid sm:grid-cols-2 gap-8 sm:gap-12 items-center">
-        <div className="relative aspect-[4/5] sm:aspect-square overflow-hidden order-2 sm:order-1">
+        <div className="relative aspect-square overflow-hidden order-2 sm:order-1">
           <WorkImage
             paletteIndex={objectsWork.paletteIndex}
             title={objectsWork.title}

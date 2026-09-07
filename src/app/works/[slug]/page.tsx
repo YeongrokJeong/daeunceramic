@@ -70,7 +70,7 @@ export default async function WorkDetailPage({
         <p className="label-caption shrink-0 ml-4">2026</p>
       </div>
 
-      <div className="relative mt-5 aspect-[4/5] sm:aspect-[16/10] overflow-hidden">
+      <div className="relative mt-5 aspect-square overflow-hidden">
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}

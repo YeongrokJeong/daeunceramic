@@ -19,7 +19,7 @@ export default function CollectionListItem({ work }: { work: Work }) {
       }}
       className="group flex gap-4 sm:gap-6 py-5 border-b border-[var(--color-line)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]"
     >
-      <div className="relative w-28 sm:w-40 aspect-[4/5] shrink-0 overflow-hidden bg-[var(--color-bg-soft)]">
+      <div className="relative w-28 sm:w-40 aspect-square shrink-0 overflow-hidden bg-[var(--color-bg-soft)]">
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}

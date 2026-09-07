@@ -21,7 +21,7 @@ export default function WorkCard({ work }: { work: Work }) {
       }}
       className="group block cursor-pointer focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]"
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-bg-soft)]">
+      <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-bg-soft)]">
         <WorkImage
           paletteIndex={work.paletteIndex}
           title={work.title}
