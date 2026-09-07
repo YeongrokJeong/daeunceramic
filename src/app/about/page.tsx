@@ -8,14 +8,18 @@ export const metadata = {
 // 작가님께 실제 소개글을 받으면 아래 텍스트만 교체하면 됩니다.
 const KEYWORDS = ["Ceramics", "Objects", "Editions"];
 
-// 전시 이력(사용자 제공, 실제 정보).
+// 전시 이력(사용자 제공, 실제 정보). 연도별로 묶어서 표시.
 const EXHIBITIONS = [
-  { year: "2026", desc: "성신여자대학교 대학원 단체전 '여름조각' (인사동, 서울)" },
-  { year: "2019", desc: "'일상도예' 판매전 작가 참가 (얀앤홉 갤러리, 위례신도시)" },
-  { year: "2018", desc: "도자 공예 졸업 전시 (성신여자대학교)" },
-  { year: "2018", desc: "전국 여류 도예 공모전 '특선'" },
-  { year: "2017", desc: "공예트렌드페어 부스 참가 (COEX, 삼성동, 서울)" },
-  { year: "2017", desc: "서울 유니브 엑스포 SeoulUnivExpo 참가 (광화문, 서울)" },
+  { year: "2026", items: ["성신여자대학교 대학원 단체전 '여름조각'"] },
+  { year: "2019", items: ["'일상도예' 판매전 작가 참가"] },
+  {
+    year: "2018",
+    items: ["도자 공예 졸업 전시", "전국 여류 도예 공모전 '특선'"],
+  },
+  {
+    year: "2017",
+    items: ["공예트렌드페어 부스 참가", "서울 유니브 엑스포 SeoulUnivExpo 참가"],
+  },
 ];
 
 export default function AboutPage() {
@@ -48,15 +52,19 @@ export default function AboutPage() {
 
           <div className="mt-8 border-t border-[var(--color-line)] pt-6">
             <p className="label-caption">EXHIBITIONS</p>
-            <div className="mt-4 space-y-3">
-              {EXHIBITIONS.map((ex, i) => (
-                <div key={i} className="flex gap-4 text-sm">
+            <div className="mt-4 space-y-4">
+              {EXHIBITIONS.map((ex) => (
+                <div key={ex.year} className="flex gap-4 text-sm">
                   <span className="w-12 shrink-0 text-[var(--color-ink-soft)]">
                     {ex.year}
                   </span>
-                  <span className="text-[var(--color-ink)] leading-relaxed">
-                    {ex.desc}
-                  </span>
+                  <div className="space-y-1">
+                    {ex.items.map((item) => (
+                      <p key={item} className="text-[var(--color-ink)] leading-relaxed">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
