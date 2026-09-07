@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import WorkCard from "@/components/WorkCard";
+import CollectionListItem from "@/components/CollectionListItem";
 import { CATEGORIES, type Work } from "@/lib/works";
 
-// 레퍼런스의 COLLECTION 페이지: 필터 탭(ALL + 카테고리) + 3열 그리드.
-// 개수가 15개라 무한스크롤 없이 한 번에 보여준다. 가격 대신 제목/연도만 노출.
-// 상세페이지에서 뒤로 돌아왔을 때 방금 봤던 카드 위치로 스크롤 복원한다.
+// COLLECTION 페이지: 필터 탭(ALL + 카테고리) + 한 줄에 한 상품 리스트
+// (왼쪽 사진, 오른쪽 이름/가격/수량). 개수가 13개라 무한스크롤 없이 한 번에
+// 보여준다. 상세페이지에서 뒤로 돌아왔을 때 방금 봤던 항목 위치로 스크롤 복원.
 export default function CollectionGrid({ works }: { works: Work[] }) {
   const [filter, setFilter] = useState<string>("ALL");
   const visible =
@@ -51,9 +51,9 @@ export default function CollectionGrid({ works }: { works: Work[] }) {
         ))}
       </div>
 
-      <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8 sm:gap-x-8 sm:gap-y-10">
+      <div className="mt-4">
         {visible.map((work) => (
-          <WorkCard key={work.id} work={work} />
+          <CollectionListItem key={work.id} work={work} />
         ))}
       </div>
 
