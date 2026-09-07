@@ -1,25 +1,22 @@
 import Link from "next/link";
 
-// 레퍼런스의 헤더(로고 + 서브타이틀 + 우측 내비게이션)를 따름.
-// ABOUT/PROCESS/CONTACT는 실제 페이지가 생겨서 내비게이션에 포함.
+// 레퍼런스의 헤더(로고 + 우측 내비게이션)를 따름.
 const NAV_LINKS = [
   { href: "/collection", label: "COLLECTION" },
   { href: "/about", label: "ABOUT" },
-  { href: "/process", label: "PROCESS" },
   { href: "/contact", label: "CONTACT" },
 ];
 
 export default function SiteHeader() {
   return (
     <header className="px-5 sm:px-8 py-5 sm:py-6 max-w-5xl mx-auto w-full border-b border-[var(--color-line)]">
-      <div className="flex items-start justify-between sm:items-center">
+      <div className="flex items-center justify-between">
         <Link href="/" className="leading-none">
           <span className="font-logo text-sm sm:text-base uppercase">
             Daeun Ceramic
           </span>
-          <span className="block label-caption mt-1">CERAMICS / OBJECTS</span>
         </Link>
-        <nav className="inline-grid grid-cols-2 gap-x-4 gap-y-1.5 justify-items-end sm:flex sm:gap-x-5">
+        <nav className="flex gap-x-5">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
