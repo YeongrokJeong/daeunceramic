@@ -42,7 +42,7 @@ export default async function WorkDetailPage({
     <main className="flex-1 max-w-3xl mx-auto w-full px-5 sm:px-8 py-6 sm:py-10 pb-28 sm:pb-16">
       <div className="flex items-center justify-between">
         <Link
-          href="/collection"
+          href="/"
           className="label-caption hover:text-[var(--color-ink)] transition-colors"
         >
           ← BACK TO COLLECTION

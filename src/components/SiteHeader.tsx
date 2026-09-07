@@ -3,7 +3,7 @@ import Link from "next/link";
 // 레퍼런스의 헤더(로고 + 우측 내비게이션)를 따름.
 // 스크롤해도 계속 보이도록 상단에 고정(sticky).
 const NAV_LINKS = [
-  { href: "/collection", label: "COLLECTION" },
+  { href: "/", label: "COLLECTION" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
