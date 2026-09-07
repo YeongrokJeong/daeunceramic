@@ -1,5 +1,3 @@
-import WorkImage from "@/components/WorkImage";
-
 export const metadata = {
   title: "About | Daeun Ceramic",
 };
@@ -26,47 +24,41 @@ export default function AboutPage() {
     <main className="flex-1 px-5 sm:px-8 py-8 sm:py-12 pb-24 max-w-5xl mx-auto w-full">
       <p className="font-display text-2xl sm:text-3xl">ABOUT</p>
 
-      <div className="mt-8 grid sm:grid-cols-2 gap-8 sm:gap-16 items-start">
-        <div className="aspect-[4/5] overflow-hidden">
-          <WorkImage paletteIndex={2} title="" className="h-full w-full" />
+      <div className="mt-8 max-w-md">
+        <p className="font-display text-lg">이다은</p>
+        <p className="label-caption mt-1">CERAMIC ARTIST</p>
+
+        <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)]">
+          흙이 만들어내는 우연한 형태와 흐름에 관심을 두고 작업하는 도자
+          작가입니다. 손물레로 성형한 그릇과 오브제를 통해, 정형화되지
+          않은 자연스러운 아름다움을 일상 속에 담고자 합니다.
+        </p>
+
+        <div className="mt-8 border-t border-[var(--color-line)] pt-6">
+          <p className="label-caption">EXHIBITIONS</p>
+          <div className="mt-4 space-y-4">
+            {EXHIBITIONS.map((ex) => (
+              <div key={ex.year} className="flex gap-4 text-sm">
+                <span className="w-12 shrink-0 text-[var(--color-ink-soft)]">
+                  {ex.year}
+                </span>
+                <div className="space-y-1">
+                  {ex.items.map((item) => (
+                    <p key={item} className="text-[var(--color-ink)] leading-relaxed">
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div>
-          <p className="font-display text-lg">이다은</p>
-          <p className="label-caption mt-1">CERAMIC ARTIST</p>
-
-          <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
-            흙이 만들어내는 우연한 형태와 흐름에 관심을 두고 작업하는 도자
-            작가입니다. 손물레로 성형한 그릇과 오브제를 통해, 정형화되지
-            않은 자연스러운 아름다움을 일상 속에 담고자 합니다.
+        <div className="mt-8 border-t border-[var(--color-line)] pt-6">
+          <p className="label-caption">
+            CV
+            <span className="text-[var(--color-ink-soft)]"> · 준비 중</span>
           </p>
-
-          <div className="mt-8 border-t border-[var(--color-line)] pt-6">
-            <p className="label-caption">EXHIBITIONS</p>
-            <div className="mt-4 space-y-4">
-              {EXHIBITIONS.map((ex) => (
-                <div key={ex.year} className="flex gap-4 text-sm">
-                  <span className="w-12 shrink-0 text-[var(--color-ink-soft)]">
-                    {ex.year}
-                  </span>
-                  <div className="space-y-1">
-                    {ex.items.map((item) => (
-                      <p key={item} className="text-[var(--color-ink)] leading-relaxed">
-                        {item}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-8 border-t border-[var(--color-line)] pt-6">
-            <p className="label-caption">
-              CV
-              <span className="text-[var(--color-ink-soft)]"> · 준비 중</span>
-            </p>
-          </div>
         </div>
       </div>
     </main>
