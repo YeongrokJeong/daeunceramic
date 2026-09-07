@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* 이다은 도자기 — 웜톤 미니멀 디자인 시스템
+   흙, 유약의 색을 모티브로 한 팔레트.
+   라이트 테마 고정(임시 판매 사이트, 다크모드 불필요). */
+:root {
+  --color-bg: #f7f0e7; /* 따뜻한 아이보리 배경 */
+  --color-bg-soft: #f1e6d8; /* 카드/섹션 배경 */
+  --color-ink: #362a22; /* 짙은 흙색 텍스트 */
+  --color-ink-soft: #6b5c4f; /* 보조 텍스트 */
+  --color-accent: #b5714a; /* 테라코타 CTA */
+  --color-accent-dark: #96593a;
+  --color-sage: #8fa189; /* 보조 포인트(세이지) */
+  --color-line: #e2d3bf; /* 구분선 */
+  --color-card: #fffaf3;
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-ink);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), "Pretendard", -apple-system, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-serif), serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
