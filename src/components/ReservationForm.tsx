@@ -105,7 +105,7 @@ export default function ReservationForm({ workSlug }: { workSlug: string }) {
       </button>
 
       <p className="text-xs text-[var(--color-ink-soft)] text-center leading-relaxed">
-        예약 신청 시 남겨주신 이름과 연락처는 판매 안내 목적으로만 사용됩니다.
+        남겨주신 이름과 연락처는 판매 안내 목적으로만 사용됩니다.
       </p>
     </form>
   );

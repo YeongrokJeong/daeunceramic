@@ -24,6 +24,7 @@ export default function CollectionListItem({ work }: { work: Work }) {
           paletteIndex={work.paletteIndex}
           title={work.title}
           image={work.image}
+          sizes="(min-width: 640px) 160px, 112px"
           className={`h-full w-full transition-transform duration-500 group-hover:scale-[1.02] ${
             work.soldOut ? "grayscale" : ""
           }`}

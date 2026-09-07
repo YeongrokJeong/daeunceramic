@@ -98,7 +98,7 @@ export default async function WorkDetailPage({
             </tbody>
           </table>
 
-          <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed border-t border-[var(--color-line)] pt-6">
+          <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed">
             {work.careNote}
           </p>
 

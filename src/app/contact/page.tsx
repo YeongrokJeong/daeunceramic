@@ -34,7 +34,6 @@ export default function ContactPage() {
               {CONTACT_EMAIL}
             </p>
           </div>
-          <span className="label-caption shrink-0">→</span>
         </a>
 
         <a
@@ -56,7 +55,7 @@ export default function ContactPage() {
               {instagramName}
             </p>
           </div>
-          <span className="label-caption shrink-0">프로필 보기 →</span>
+          <span className="label-caption shrink-0">인스타그램 방문하기 →</span>
         </a>
       </div>
     </main>

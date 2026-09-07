@@ -1,10 +1,13 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 // 일정 이상 스크롤하면 나타나는 최상단 이동 버튼.
-// 상세페이지의 모바일 고정 구매 바(하단)와 겹치지 않도록 넉넉히 띄운다.
+// 상세페이지는 PREV/NEXT·뒤로가기 등 자체 내비게이션이 있고 페이지 길이도
+// 짧아 필요 없으므로 숨긴다.
 export default function ScrollToTopButton() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -14,6 +17,7 @@ export default function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (pathname?.startsWith("/works/")) return null;
   if (!visible) return null;
 
   return (

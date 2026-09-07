@@ -7,12 +7,14 @@ export default function WorkImage({
   title,
   image,
   fit = "contain",
+  sizes = "(min-width: 640px) 33vw, 50vw",
   className,
 }: {
   paletteIndex: number;
   title: string;
   image?: string;
   fit?: "contain" | "cover";
+  sizes?: string;
   className?: string;
 }) {
   if (image) {
@@ -20,6 +22,9 @@ export default function WorkImage({
     // 카드/상세페이지는 object-contain으로 전체 제품이 보이게 하고, 남는
     // 여백은 배경색으로 채운다(레터박스). 히어로 배너처럼 잘려도 괜찮은
     // 곳만 fit="cover"로 넘긴다.
+    // sizes는 실제 화면에 표시되는 폭에 맞게 호출하는 쪽에서 넘겨야
+    // next/image가 꼭 맞는 크기의 이미지를 받아온다(안 맞으면 필요 이상
+    // 큰 원본을 받아와 느려짐 - Collection 리스트처럼 작게 보이는 곳에서 중요).
     return (
       <div
         className={`relative overflow-hidden bg-[var(--color-bg-soft)] ${className ?? ""}`}
@@ -28,7 +33,7 @@ export default function WorkImage({
           src={image}
           alt={title}
           fill
-          sizes="(min-width: 640px) 33vw, 50vw"
+          sizes={sizes}
           className={fit === "cover" ? "object-cover" : "object-contain"}
         />
       </div>
