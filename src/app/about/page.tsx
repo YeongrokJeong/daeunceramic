@@ -1,7 +1,7 @@
 import WorkImage from "@/components/WorkImage";
 
 export const metadata = {
-  title: "About | 이다은 도자기",
+  title: "About | Daeun Ceramic",
 };
 
 // 작가 소개 문구/키워드는 placeholder — 형식만 잡아둔 상태.

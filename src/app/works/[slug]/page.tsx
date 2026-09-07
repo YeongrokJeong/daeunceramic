@@ -17,7 +17,7 @@ export async function generateMetadata({
   const work = getWorkBySlug(slug);
   if (!work) return {};
   return {
-    title: `${work.title} | 이다은 도자기`,
+    title: `${work.title} | Daeun Ceramic`,
     description: work.shortDescription,
   };
 }

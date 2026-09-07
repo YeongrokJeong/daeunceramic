@@ -1,7 +1,7 @@
 import WorkImage from "@/components/WorkImage";
 
 export const metadata = {
-  title: "Process | 이다은 도자기",
+  title: "Process | Daeun Ceramic",
 };
 
 // 일반적인 핸드메이드 도자기 제작 공정(사용자 확인 완료). 작가님의 실제 방식과

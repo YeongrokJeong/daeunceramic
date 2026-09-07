@@ -17,9 +17,8 @@ const serif = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
-  title: "이다은 도자기 | 판매예약",
-  description:
-    "이다은 작가의 도자기 작품을 둘러보고, 마음에 드는 작품을 예약해보세요.",
+  title: "Daeun Ceramic",
+  description: "사소한 일상에 특별함을 더하는 핸드메이드 도자기. 다은 세라믹입니다.",
 };
 
 export const viewport: Viewport = {

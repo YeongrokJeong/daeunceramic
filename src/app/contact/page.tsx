@@ -2,7 +2,7 @@ import WorkImage from "@/components/WorkImage";
 import { CONTACT_EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/contact";
 
 export const metadata = {
-  title: "Contact | 이다은 도자기",
+  title: "Contact | Daeun Ceramic",
 };
 
 export default function ContactPage() {

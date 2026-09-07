@@ -15,7 +15,7 @@ export default function SiteHeader() {
       <div className="flex items-start justify-between">
         <Link href="/" className="leading-none">
           <span className="font-logo text-sm sm:text-base uppercase">
-            Daeun Lee
+            Daeun Ceramic
           </span>
           <span className="block label-caption mt-1">CERAMICS / OBJECTS</span>
         </Link>

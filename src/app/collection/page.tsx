@@ -2,7 +2,7 @@ import CollectionGrid from "@/components/CollectionGrid";
 import { works } from "@/lib/works";
 
 export const metadata = {
-  title: "Collection | 이다은 도자기",
+  title: "Collection | Daeun Ceramic",
 };
 
 export default function CollectionPage() {

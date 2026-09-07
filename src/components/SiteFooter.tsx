@@ -7,7 +7,7 @@ export default function SiteFooter() {
   return (
     <footer className="px-5 sm:px-8 py-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 border-t border-[var(--color-line)]">
       <div>
-        <p className="font-logo text-sm uppercase">Daeun Lee</p>
+        <p className="font-logo text-sm uppercase">Daeun Ceramic</p>
         <p className="label-caption mt-1">CERAMICS / OBJECTS</p>
       </div>
       <div className="flex gap-4">
@@ -32,7 +32,7 @@ export default function SiteFooter() {
           CONTACT
         </Link>
       </div>
-      <p className="label-caption">© 2026 DAEUN LEE. ALL RIGHTS RESERVED.</p>
+      <p className="label-caption">© 2026 DAEUN CERAMIC. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
