@@ -82,7 +82,7 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
             type="button"
             onClick={closeLightbox}
             aria-label="닫기"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white text-sm tracking-[0.2em] cursor-pointer"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 bg-black/70 text-white/90 hover:text-white hover:bg-black/85 text-xs tracking-[0.2em] px-3 py-2 cursor-pointer transition-colors"
           >
             CLOSE ✕
           </button>
