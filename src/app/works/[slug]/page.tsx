@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import WorkImage from "@/components/WorkImage";
+import ZoomableWorkImage from "@/components/ZoomableWorkImage";
 import PurchaseButton from "@/components/PurchaseButton";
 import { formatPrice, getWorkBySlug, works } from "@/lib/works";
 
@@ -70,21 +70,7 @@ export default async function WorkDetailPage({
         <p className="label-caption shrink-0 ml-4">2026</p>
       </div>
 
-      <div className="relative mt-5 aspect-square overflow-hidden">
-        <WorkImage
-          paletteIndex={work.paletteIndex}
-          title={work.title}
-          image={work.image}
-          className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
-        />
-        {work.soldOut && (
-          <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
-            <span className="text-white text-sm tracking-[0.2em]">
-              SOLD OUT
-            </span>
-          </div>
-        )}
-      </div>
+      <ZoomableWorkImage work={work} />
 
       <div className="mt-8 sm:mt-12 grid sm:grid-cols-5 gap-10 sm:gap-16">
         <div className="sm:col-span-3">
