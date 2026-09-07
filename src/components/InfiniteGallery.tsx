@@ -33,7 +33,7 @@ export default function InfiniteGallery({ works }: { works: Work[] }) {
 
   return (
     <div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-2.5 gap-y-4 sm:gap-x-4 sm:gap-y-6">
+      <div className="flex flex-col divide-y divide-[var(--color-line)] sm:grid sm:grid-cols-3 md:grid-cols-4 sm:divide-y-0 gap-x-4 sm:gap-y-6">
         {visible.map((work) => (
           <WorkCard key={work.id} work={work} />
         ))}
