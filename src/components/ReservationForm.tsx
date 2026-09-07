@@ -4,13 +4,7 @@ import { useState, type FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export default function ReservationForm({
-  workSlug,
-  soldOut,
-}: {
-  workSlug: string;
-  soldOut?: boolean;
-}) {
+export default function ReservationForm({ workSlug }: { workSlug: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -48,18 +42,10 @@ export default function ReservationForm({
     }
   }
 
-  if (soldOut) {
-    return (
-      <div className="rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)] p-5 text-center text-sm text-[var(--color-ink-soft)]">
-        이 작품은 예약이 마감되었습니다.
-      </div>
-    );
-  }
-
   if (status === "success") {
     return (
       <div className="rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)] p-6 text-center">
-        <p className="font-display text-lg">예약 신청이 완료되었어요 🌿</p>
+        <p className="font-display text-lg">구매 신청이 완료되었어요</p>
         <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
           작가님이 남겨주신 연락처로 곧 연락드릴게요.
           <br />
@@ -113,9 +99,9 @@ export default function ReservationForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] disabled:opacity-60 text-white font-medium py-3.5 text-base transition-colors cursor-pointer"
+        className="w-full rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] disabled:opacity-60 text-white font-normal py-3.5 text-base transition-colors cursor-pointer"
       >
-        {status === "submitting" ? "신청 중..." : "예약하기"}
+        {status === "submitting" ? "신청 중..." : "신청하기"}
       </button>
 
       <p className="text-xs text-[var(--color-ink-soft)] text-center leading-relaxed">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import WorkImage from "@/components/WorkImage";
-import ReservationForm from "@/components/ReservationForm";
+import PurchaseButton from "@/components/PurchaseButton";
 import { formatPrice, getWorkBySlug, works } from "@/lib/works";
 
 export function generateStaticParams() {
@@ -79,9 +79,11 @@ export default async function WorkDetailPage({
         </div>
 
         <div className="sm:col-span-2">
-          <div className="sm:sticky sm:top-6 rounded-2xl border border-[var(--color-line)] bg-[var(--color-bg-soft)] p-5 sm:p-6">
-            <h2 className="font-display text-lg mb-4">예약 신청</h2>
-            <ReservationForm workSlug={work.slug} soldOut={work.soldOut} />
+          <div className="sm:sticky sm:top-6">
+            <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
+            <p className="mt-3 text-xs text-[var(--color-ink-soft)] text-center leading-relaxed">
+              구매하기를 누르면 이름/연락처를 남기고, 작가가 직접 연락드려요.
+            </p>
           </div>
         </div>
       </div>
