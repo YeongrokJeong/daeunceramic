@@ -6,12 +6,14 @@ export const metadata = {
 };
 
 export default function ContactPage() {
+  const instagramName = INSTAGRAM_HANDLE.replace(/^@/, "");
+
   return (
     <main className="flex-1 px-5 sm:px-8 py-8 sm:py-12 pb-24 max-w-5xl mx-auto w-full">
       <p className="font-display text-2xl sm:text-3xl">CONTACT</p>
 
       <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
-        작품 구매, 전시 및 기타 문의는 아래 연락처를 통해 받고 있습니다.
+        작품 문의, 전시 문의 등은 아래 연락처를 통해 받고 있습니다.
       </p>
 
       <div className="mt-10 border-t border-[var(--color-line)]">
@@ -28,7 +30,7 @@ export default function ContactPage() {
           />
           <div className="flex-1 min-w-0">
             <p className="label-caption">EMAIL</p>
-            <p className="font-display text-xl sm:text-2xl mt-1 group-hover:text-[var(--color-ink-soft)] transition-colors">
+            <p className="font-display text-base sm:text-lg mt-1 group-hover:text-[var(--color-ink-soft)] transition-colors">
               {CONTACT_EMAIL}
             </p>
           </div>
@@ -50,18 +52,13 @@ export default function ContactPage() {
           />
           <div className="flex-1 min-w-0">
             <p className="label-caption">INSTAGRAM</p>
-            <p className="font-display text-xl sm:text-2xl mt-1 group-hover:text-[var(--color-ink-soft)] transition-colors">
-              {INSTAGRAM_HANDLE}
+            <p className="font-display text-base sm:text-lg mt-1 underline underline-offset-4 decoration-[var(--color-line)] group-hover:text-[var(--color-ink-soft)] transition-colors">
+              {instagramName}
             </p>
           </div>
-          <span className="label-caption shrink-0">→</span>
+          <span className="label-caption shrink-0">프로필 보기 →</span>
         </a>
       </div>
-
-      <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed max-w-md">
-        문의 시 원하시는 작품명을 함께 남겨주시면 더 빠르게 답변드려요.
-        보통 1~2일 안에 답변드리고 있습니다.
-      </p>
     </main>
   );
 }
