@@ -35,6 +35,9 @@ export default function WorkCard({ work }: { work: Work }) {
           {formatPrice(work.price)}
           {!work.soldOut && " · 1점 한정"}
         </p>
+        <p className="mt-1.5 text-xs text-[var(--color-ink-soft)] leading-relaxed hidden sm:block">
+          {work.shortDescription}
+        </p>
       </div>
     </Link>
   );

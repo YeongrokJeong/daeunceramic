@@ -40,8 +40,15 @@ export default async function WorkDetailPage({
         href="/"
         className="label-caption hover:text-[var(--color-ink)] transition-colors"
       >
-        ← BACK
+        ← BACK TO WORKS
       </Link>
+
+      <div className="mt-6 flex items-baseline justify-between">
+        <h1 className="font-display text-2xl sm:text-3xl leading-snug">
+          {work.title}
+        </h1>
+        <p className="label-caption shrink-0 ml-4">2026</p>
+      </div>
 
       <div className="relative mt-5 aspect-[4/5] sm:aspect-[16/10] overflow-hidden">
         <WorkImage
@@ -60,14 +67,11 @@ export default async function WorkDetailPage({
 
       <div className="mt-8 sm:mt-12 grid sm:grid-cols-5 gap-10 sm:gap-16">
         <div className="sm:col-span-3">
-          <h1 className="font-display text-2xl sm:text-3xl leading-snug">
-            {work.title}
-          </h1>
-          <p className="mt-2 label-caption">
+          <p className="label-caption">
             {work.soldOut ? "SOLD OUT" : "AVAILABLE · 1점 한정"}
           </p>
 
-          <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
+          <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
             {work.description}
           </p>
 
@@ -117,7 +121,7 @@ export default async function WorkDetailPage({
 
       {/* 모바일 전용: 정보가 길어져도 구매 버튼은 항상 화면 하단에 고정 */}
       <div className="sm:hidden fixed inset-x-0 bottom-0 z-30 bg-[var(--color-bg)] border-t border-[var(--color-line)] p-3">
-        <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
+        <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} fullWidth />
       </div>
     </main>
   );

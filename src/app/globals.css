@@ -7,14 +7,14 @@
      위계를 만듦 (색이 아니라 타이포그래피로 강조)
    - 박스/카드 배경 없이 여백과 구분선만으로 섹션을 나눔 */
 :root {
-  --color-bg: #f6f5f1; /* 따뜻한 오프화이트 */
-  --color-bg-soft: #f6f5f1; /* 별도 카드색 없음. bg와 동일하게 두어 박스 느낌 제거 */
-  --color-ink: #1c1c1c; /* 차콜(완전 블랙 아님) */
-  --color-ink-soft: #8a8a85; /* 웜 그레이. 캡션/보조정보용 */
-  --color-accent: #1c1c1c; /* 포인트 컬러 없음. CTA도 무채색으로 통일 */
-  --color-accent-dark: #1c1c1c;
-  --color-line: #e4e3df; /* 아주 옅은 구분선 */
-  --color-card: #f6f5f1;
+  --color-bg: #fafaf9; /* 거의 순백. 따뜻한 베이지 톤 뺌 */
+  --color-bg-soft: #fafaf9;
+  --color-ink: #141414; /* 거의 블랙 */
+  --color-ink-soft: #8c8c8c; /* 뉴트럴 그레이. 캡션/보조정보용 */
+  --color-accent: #141414;
+  --color-accent-dark: #141414;
+  --color-line: #e2e2e0; /* 아주 옅은 구분선 */
+  --color-card: #fafaf9;
 }
 
 @theme inline {
@@ -38,15 +38,22 @@ body {
    레퍼런스의 에디토리얼/갤러리 톤을 따라감. */
 .font-display {
   font-family: var(--font-serif), serif;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.01em;
 }
 
 /* 내비게이션, 캡션, 라벨 등. 작게 + 트래킹 넓게 + 그레이로 위계를 낮춤. */
 .label-caption {
   font-size: 0.6875rem; /* 11px */
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--color-ink-soft);
+}
+
+/* 로고 전용. 레퍼런스처럼 트래킹 넓은 세리프 대문자 톤. */
+.font-logo {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -5,13 +5,14 @@ import Link from "next/link";
 // 실제 소개/연락처 정보가 생기면 여기에 내비게이션을 추가하면 된다.
 export default function SiteHeader() {
   return (
-    <header className="px-5 sm:px-8 py-4 sm:py-5 flex items-baseline justify-between max-w-5xl mx-auto w-full">
+    <header className="px-5 sm:px-8 py-5 sm:py-6 flex items-start justify-between max-w-5xl mx-auto w-full border-b border-[var(--color-line)]">
       <Link href="/" className="leading-none">
-        <span className="font-display text-base sm:text-lg tracking-wide">
-          이다은
+        <span className="font-logo text-sm sm:text-base uppercase">
+          Daeun Lee
         </span>
-        <span className="block label-caption mt-0.5">CERAMICS / OBJECTS</span>
+        <span className="block label-caption mt-1">CERAMICS / OBJECTS</span>
       </Link>
+      <span className="label-caption pt-0.5">SHOP</span>
     </header>
   );
 }
