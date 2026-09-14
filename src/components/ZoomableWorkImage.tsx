@@ -5,18 +5,26 @@ import Image from "next/image";
 import WorkImage from "@/components/WorkImage";
 import type { Work } from "@/lib/works";
 
-// 상세페이지 메인 사진 전용: 클릭하면 전체화면으로 확대해서 볼 수 있다.
-// 카드/리스트용 정사각 패딩 사진 대신, 여백 없는 원본 비율 detailImage를
-// 써서 사진 위아래(또는 좌우)에 불필요한 흰 여백이 생기지 않도록 한다.
+// 상세페이지 사진 갤러리: 여백 없는 원본 비율 사진(images)을 여러 장 넘겨볼 수
+// 있고, 클릭하면 전체화면으로 확대해서 자세히 들여다볼 수 있다.
 // 모바일 뒤로가기(popstate)를 눌렀을 때 상세페이지 자체를 벗어나지 않고
 // 라이트박스만 닫히도록 히스토리에 상태를 하나 쌓아둔다.
 export default function ZoomableWorkImage({ work }: { work: Work }) {
+  const photos =
+    work.images && work.images.length > 0
+      ? work.images
+      : work.image
+        ? [work.image]
+        : [];
+
+  const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
   // 뒤로가기로 닫힌 경우엔 history.back()을 다시 부르면 안 되므로 구분한다.
   const closedByPopRef = useRef(false);
 
-  const openLightbox = () => {
+  const openLightbox = (i: number) => {
     closedByPopRef.current = false;
+    setIndex(i);
     window.history.pushState({ lightbox: true }, "");
     setOpen(true);
   };
@@ -29,11 +37,17 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
     }
   };
 
+  const showPrev = () =>
+    setIndex((i) => (i - 1 + photos.length) % photos.length);
+  const showNext = () => setIndex((i) => (i + 1) % photos.length);
+
   useEffect(() => {
     if (!open) return;
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
     };
     const onPopState = () => {
       closedByPopRef.current = true;
@@ -49,38 +63,37 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
       document.body.style.overflow = "";
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, photos.length]);
 
-  const hasDetailImage =
-    work.detailImage && work.detailWidth && work.detailHeight;
+  if (photos.length === 0) {
+    return (
+      <div className="relative mt-5 aspect-square w-full">
+        <WorkImage
+          paletteIndex={work.paletteIndex}
+          title={work.title}
+          className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
+        />
+      </div>
+    );
+  }
 
   return (
     <>
       <button
         type="button"
-        onClick={openLightbox}
+        onClick={() => openLightbox(index)}
         aria-label="사진 확대해서 보기"
-        className="relative mt-5 w-full overflow-hidden cursor-zoom-in block"
+        className="relative mt-5 w-full overflow-hidden cursor-zoom-in block bg-[var(--color-bg-soft)]"
       >
-        {hasDetailImage ? (
-          <Image
-            src={work.detailImage!}
-            alt={work.title}
-            width={work.detailWidth}
-            height={work.detailHeight}
-            sizes="(min-width: 640px) 640px, 100vw"
-            className={`w-full h-auto ${work.soldOut ? "grayscale" : ""}`}
-          />
-        ) : (
-          <div className="relative aspect-square w-full">
-            <WorkImage
-              paletteIndex={work.paletteIndex}
-              title={work.title}
-              image={work.image}
-              className={`h-full w-full ${work.soldOut ? "grayscale" : ""}`}
-            />
-          </div>
-        )}
+        <Image
+          key={photos[index]}
+          src={photos[index]}
+          alt={work.title}
+          width={1600}
+          height={1600}
+          sizes="(min-width: 640px) 640px, 100vw"
+          className={`w-full h-auto ${work.soldOut ? "grayscale" : ""}`}
+        />
         {work.soldOut && (
           <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
             <span className="text-white text-sm tracking-[0.2em]">
@@ -89,6 +102,32 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
           </div>
         )}
       </button>
+
+      {photos.length > 1 && (
+        <div className="mt-3 flex gap-2">
+          {photos.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`사진 ${i + 1}번 보기`}
+              className={`relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden bg-[var(--color-bg-soft)] cursor-pointer ${
+                i === index
+                  ? "ring-1 ring-[var(--color-ink)]"
+                  : "opacity-60 hover:opacity-100"
+              } transition-opacity`}
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
 
       {open && (
         <div
@@ -105,6 +144,37 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
           >
             CLOSE ✕
           </button>
+
+          {photos.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showPrev();
+                }}
+                aria-label="이전 사진"
+                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-black/70 text-white/90 hover:text-white hover:bg-black/85 text-xs tracking-[0.2em] px-3 py-2 cursor-pointer transition-colors"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showNext();
+                }}
+                aria-label="다음 사진"
+                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-black/70 text-white/90 hover:text-white hover:bg-black/85 text-xs tracking-[0.2em] px-3 py-2 cursor-pointer transition-colors"
+              >
+                ›
+              </button>
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-10 bg-black/70 text-white/90 text-xs tracking-[0.2em] px-3 py-1.5">
+                {index + 1} / {photos.length}
+              </div>
+            </>
+          )}
+
           <div
             className="relative w-full h-full max-w-3xl"
             onClick={(e) => e.stopPropagation()}
@@ -112,7 +182,7 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
             <WorkImage
               paletteIndex={work.paletteIndex}
               title={work.title}
-              image={work.detailImage ?? work.image}
+              image={photos[index]}
               className="h-full w-full"
             />
           </div>
