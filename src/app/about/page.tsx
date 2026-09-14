@@ -1,6 +1,15 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "About | Daeun Ceramic",
 };
+
+// 전시 현장/작업 사진(사용자 제공, 실제 사진).
+const EXHIBITION_PHOTOS = [
+  "/about/exhibition-01.jpg",
+  "/about/exhibition-02.jpg",
+  "/about/exhibition-03.jpg",
+];
 
 // 작가 소개 문구는 placeholder — 형식만 잡아둔 상태.
 // 작가님께 실제 소개글을 받으면 아래 텍스트만 교체하면 됩니다.
@@ -54,12 +63,23 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-[var(--color-line)] pt-6">
-          <p className="label-caption">
-            CV
-            <span className="text-[var(--color-ink-soft)]"> · 준비 중</span>
-          </p>
-        </div>
+      </div>
+
+      <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl">
+        {EXHIBITION_PHOTOS.map((src) => (
+          <div
+            key={src}
+            className="relative aspect-square overflow-hidden bg-[var(--color-bg-soft)]"
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 200px, 33vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
       </div>
     </main>
   );
