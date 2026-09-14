@@ -4,8 +4,8 @@ import { useState } from "react";
 import Modal from "@/components/Modal";
 import ReservationForm from "@/components/ReservationForm";
 
-// "구매하기" 버튼. 레퍼런스의 "INQUIRE ABOUT THIS PIECE" 버튼처럼 색 채움 없이
-// 테두리만 있다가 hover 시 반전(채움)되는 절제된 스타일.
+// "구매하기" 버튼. 현장 즉흥 구매를 유도해야 하는 상황이라, 테두리만 있던
+// 절제된 스타일 대신 처음부터 색이 채워진 진한 버튼으로 눈에 잘 띄게 한다.
 export default function PurchaseButton({
   workSlug,
   soldOut,
@@ -35,7 +35,7 @@ export default function PurchaseButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`${width} border border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] py-3.5 text-sm tracking-wide transition-colors cursor-pointer`}
+        className={`${width} bg-[var(--color-ink)] text-[var(--color-bg)] hover:opacity-90 py-4 text-base font-medium tracking-wide transition-opacity cursor-pointer shadow-sm`}
       >
         구매하기 →
       </button>

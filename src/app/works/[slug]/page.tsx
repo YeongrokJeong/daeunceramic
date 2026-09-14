@@ -102,6 +102,15 @@ export default async function WorkDetailPage({
             {work.careNote}
           </p>
 
+          {work.customOrderNote && (
+            <div className="mt-6 text-xs leading-relaxed border-t border-[var(--color-line)] pt-6">
+              <p className="text-[var(--color-ink)]">주문제작</p>
+              <p className="mt-1.5 text-[var(--color-ink-soft)]">
+                {work.customOrderNote}
+              </p>
+            </div>
+          )}
+
           <div className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed border-t border-[var(--color-line)] pt-6">
             <p className="text-[var(--color-ink)]">배송 · 교환/반품</p>
             <p className="mt-1.5">

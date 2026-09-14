@@ -25,6 +25,7 @@ export type Work = {
   microwaveSafe: boolean; // 전자레인지 사용 가능 여부
   dishwasherSafe: boolean; // 식기세척기 사용 가능 여부
   careNote: string; // 사용/관리 주의사항
+  customOrderNote?: string; // 색 조합 등 주문제작 관련 안내(있는 경우만 표시)
 };
 
 // 핸드메이드 도자기 전반에 적용되는 보수적인 기본값.
@@ -50,9 +51,10 @@ const rawWorks: WorkInput[] = [
     price: 32000,
     shortDescription: "블루 무늬 라떼컵",
     description:
-      "손으로 성형한 라떼컵에 블루 톤 무늬를 넣은 작품입니다. 흐르는 무늬는 한 점씩 조금씩 달라요.",
-    dimensions: "지름 9cm x 높이 8cm",
-    glaze: "블루 톤",
+      "슬립캐스팅으로 성형해 산화소성한 라떼컵입니다. 유약이 흐르듯 번지는 '흐름유'와, 손으로 한 줄씩 그려 넣은 '핸드드로잉' 두 가지 방식의 무늬를 사진에 담았어요. 무늬는 한 점씩 조금씩 달라요.",
+    dimensions: "지름 8cm x 높이 8cm",
+    glaze: "흐름유 / 핸드드로잉",
+    material: "도자기 (슬립캐스팅, 산화소성)",
     paletteIndex: 0,
     image: "/works/product-16.jpg",
     images: ["/works/product-16-detail.jpg", "/works/product-16b-detail.jpg"],
@@ -66,7 +68,7 @@ const rawWorks: WorkInput[] = [
     shortDescription: "다이아몬드 창에 마블 무늬를 넣은 컵",
     description:
       "컵 표면에 다이아몬드 모양 창을 내고, 그 안에 별과 성운을 닮은 마블(대리석) 무늬를 채워 넣은 작품입니다. 무늬는 한 점씩 조금씩 달라요.",
-    dimensions: "지름 7cm x 높이 9cm",
+    dimensions: "지름 7cm x 높이 9cm (200ml)",
     glaze: "마블 유약",
     paletteIndex: 1,
     image: "/works/product-17.jpg",
@@ -76,6 +78,8 @@ const rawWorks: WorkInput[] = [
       "/works/product-19-detail.jpg",
     ],
     category: "CUPS & MUGS",
+    customOrderNote:
+      "미니 사이즈(50ml)는 원하시는 색 조합으로 주문제작도 가능해요 · 30,000원",
   },
   {
     id: "3",
