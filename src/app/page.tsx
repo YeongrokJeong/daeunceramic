@@ -1,20 +1,19 @@
+import Image from "next/image";
 import CollectionGrid from "@/components/CollectionGrid";
-import WorkImage from "@/components/WorkImage";
 import { works } from "@/lib/works";
 
 export default function Home() {
-  const hero = works[0];
-
   return (
     <main className="flex-1">
       {/* 작은 히어로 배너 + 바로 아래 전체 컬렉션. */}
-      <section className="relative">
-        <WorkImage
-          paletteIndex={hero.paletteIndex}
-          title={hero.title}
-          image={hero.image}
-          fit="cover"
-          className="h-[20vh] sm:h-[23vh] w-full"
+      <section className="relative h-[20vh] sm:h-[23vh] w-full overflow-hidden">
+        <Image
+          src="/works/banner.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 px-5 sm:px-8 pb-4 sm:pb-5 max-w-5xl mx-auto">
