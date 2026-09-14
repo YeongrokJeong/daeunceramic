@@ -15,10 +15,12 @@ export default function Home() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 px-5 sm:px-8 pb-4 sm:pb-5 max-w-5xl mx-auto">
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 flex items-center px-5 sm:px-8 max-w-5xl mx-auto">
           <h1 className="font-display text-white text-sm sm:text-lg leading-snug max-w-md">
-            형태와 재료 사이에서 우연한 흐름을 관찰하고 기록합니다.
+            형태와 재료 사이에서,
+            <br />
+            우연한 흐름을 관찰하고 기록합니다.
           </h1>
         </div>
       </section>
