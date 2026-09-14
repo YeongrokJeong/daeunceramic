@@ -77,7 +77,7 @@ export default async function WorkDetailPage({
       <div className="mt-8 sm:mt-12 grid sm:grid-cols-5 gap-10 sm:gap-16">
         <div className="sm:col-span-3">
           <p className="label-caption">
-            {work.soldOut ? "SOLD OUT" : "AVAILABLE · 1점 한정"}
+            {work.soldOut ? "SOLD OUT" : "AVAILABLE"}
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
