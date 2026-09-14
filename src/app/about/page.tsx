@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExhibitionPhotoGrid from "@/components/ExhibitionPhotoGrid";
 
 export const metadata = {
   title: "About | Daeun Ceramic",
@@ -65,22 +65,7 @@ export default function AboutPage() {
 
       </div>
 
-      <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl">
-        {EXHIBITION_PHOTOS.map((src) => (
-          <div
-            key={src}
-            className="relative aspect-square overflow-hidden bg-[var(--color-bg-soft)]"
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              sizes="(min-width: 640px) 200px, 33vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      <ExhibitionPhotoGrid photos={EXHIBITION_PHOTOS} />
     </main>
   );
 }

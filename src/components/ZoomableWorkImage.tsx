@@ -2,11 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import WorkImage from "@/components/WorkImage";
 import type { Work } from "@/lib/works";
 
 // 상세페이지 사진 갤러리: 여백 없는 원본 비율 사진(images)을 여러 장 넘겨볼 수
 // 있고, 클릭하면 전체화면으로 확대해서 자세히 들여다볼 수 있다.
+// Collection 그리드에서 특정 사진을 눌러 들어온 경우, ?photo=N 쿼리로 넘어온
+// 사진이 맨 위에 먼저 보이도록 초기 인덱스로 사용한다.
 // 모바일 뒤로가기(popstate)를 눌렀을 때 상세페이지 자체를 벗어나지 않고
 // 라이트박스만 닫히도록 히스토리에 상태를 하나 쌓아둔다.
 export default function ZoomableWorkImage({ work }: { work: Work }) {
@@ -17,7 +20,13 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
         ? [work.image]
         : [];
 
-  const [index, setIndex] = useState(0);
+  const searchParams = useSearchParams();
+  const initialIndex = (() => {
+    const raw = Number(searchParams.get("photo"));
+    return Number.isInteger(raw) && raw >= 0 && raw < photos.length ? raw : 0;
+  })();
+
+  const [index, setIndex] = useState(initialIndex);
   const [open, setOpen] = useState(false);
   // 뒤로가기로 닫힌 경우엔 history.back()을 다시 부르면 안 되므로 구분한다.
   const closedByPopRef = useRef(false);

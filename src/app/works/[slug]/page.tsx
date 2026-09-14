@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ZoomableWorkImage from "@/components/ZoomableWorkImage";
 import PurchaseButton from "@/components/PurchaseButton";
@@ -69,7 +70,9 @@ export default async function WorkDetailPage({
         </h1>
       </div>
 
-      <ZoomableWorkImage work={work} />
+      <Suspense fallback={<div className="mt-5 aspect-square w-full bg-[var(--color-bg-soft)]" />}>
+        <ZoomableWorkImage work={work} />
+      </Suspense>
 
       <div className="mt-8 sm:mt-12 grid sm:grid-cols-5 gap-10 sm:gap-16">
         <div className="sm:col-span-3">
