@@ -49,7 +49,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-0.5 sm:gap-1 bg-[#c0bdb7]">
+    <div className="grid grid-cols-3 gap-0.5 sm:gap-1 bg-[var(--color-bg)]">
       {tiles.map(({ work, src, photoIndex, isFirst }, i) => (
         <Link
           key={`${work.id}-${src}`}
@@ -64,7 +64,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
           }}
           className="group block"
         >
-          <div className="relative aspect-square overflow-hidden bg-[#c0bdb7]">
+          <div className="relative aspect-square overflow-hidden bg-[var(--color-bg)]">
             <Image
               src={src}
               alt={work.title}
@@ -81,7 +81,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
               </span>
             )}
           </div>
-          <div className="flex items-baseline justify-between gap-2 bg-[#c0bdb7] px-2 py-2 sm:px-3 sm:py-2.5">
+          <div className="flex items-baseline justify-between gap-2 bg-[var(--color-bg)] px-2 py-2 sm:px-3 sm:py-2.5">
             <p className="text-black text-[10px] sm:text-[11px] leading-snug truncate">
               {work.titleEn}
             </p>
