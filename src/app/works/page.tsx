@@ -20,7 +20,7 @@ const IN_PROGRESS_WORKS = [
     id: "02",
     slug: "keycap-mini-vase-studies",
     label: "KEYCAP",
-    title: "Keycap Mini Vase Studies",
+    title: "Keycap Mini Vase",
     meta: "Porcelain, slip casting, 2026",
     status: "Prototype / ongoing",
     image: "/works/keycap-mini-vase.png",
