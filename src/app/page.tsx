@@ -26,7 +26,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/20 hidden sm:block" />
 
         <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4 sm:-translate-y-16 lg:-translate-y-20">
-          <h1 className="font-display text-white text-7xl lg:text-8xl tracking-wide">
+          <h1 className="font-wordmark text-white text-7xl lg:text-8xl">
             DeL
           </h1>
           <p className="label-caption !text-white/85">
