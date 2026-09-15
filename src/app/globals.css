@@ -57,11 +57,11 @@ body {
   letter-spacing: 0.08em;
 }
 
-/* "DeL" 워드마크 전용. Noto Serif KR보다 획 대비가 강하고 끝이 뾰족한
-   에디토리얼 세리프(Playfair Display)로, 목업의 날렵한 인상에 가깝다. */
+/* "DeL" 워드마크 전용(Lora, Regular 400 Italic). */
 .font-wordmark {
   font-family: var(--font-wordmark), serif;
-  font-weight: 600;
+  font-weight: 400;
+  font-style: italic;
   letter-spacing: 0.01em;
 }
 
