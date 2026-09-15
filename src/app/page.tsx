@@ -24,7 +24,7 @@ export default function Home() {
         {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피 */}
         <div className="absolute inset-0 bg-black/20 hidden sm:block" />
 
-        <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4">
+        <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4 sm:-translate-y-16 lg:-translate-y-20">
           <h1 className="font-display text-white text-7xl lg:text-8xl tracking-wide">
             DeL
           </h1>
