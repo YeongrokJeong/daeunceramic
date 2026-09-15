@@ -23,7 +23,7 @@ const IN_PROGRESS_WORKS = [
     title: "Keycap Mini Vase Studies",
     meta: "Porcelain, slip casting, 2026",
     status: "Prototype / ongoing",
-    image: "/works/keycap-mini-vase.jpg",
+    image: "/works/keycap-mini-vase.png",
   },
 ];
 
