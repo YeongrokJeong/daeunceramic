@@ -11,8 +11,7 @@ const EXHIBITION_PHOTOS = [
   "/about/exhibition-03.jpg",
 ];
 
-// 작가 소개 문구는 placeholder — 형식만 잡아둔 상태.
-// 작가님께 실제 소개글을 받으면 아래 텍스트만 교체하면 됩니다.
+// 작가 소개 문구(작가님 제공, 실제 텍스트).
 
 // 전시 이력(사용자 제공, 실제 정보). 연도별로 묶어서 표시.
 const EXHIBITIONS = [
@@ -38,9 +37,9 @@ export default function AboutPage() {
         <p className="label-caption mt-1">CERAMIC ARTIST</p>
 
         <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)]">
-          흙이 만들어내는 우연한 형태와 흐름에 관심을 두고 작업하는 도자
-          작가입니다. 손물레로 성형한 그릇과 오브제를 통해, 정형화되지
-          않은 자연스러운 아름다움을 일상 속에 담고자 합니다.
+          디지털 기술과 흙이 만나는 지점을 탐구합니다. 정밀하게 설계한
+          형태에 흙과 색이 만들어내는 우연한 흐름, 손으로 그린 선을
+          더하며 기술과 수공예가 어우러지는 방식을 찾아갑니다.
         </p>
 
         <div className="mt-8 border-t border-[var(--color-line)] pt-6">
