@@ -26,9 +26,32 @@ const wordmark = Lora({
   style: ["italic"],
 });
 
+const SITE_URL = "https://daeunceramic.vercel.app";
+const SITE_DESCRIPTION =
+  "사소한 일상에 특별함을 더하는 핸드메이드 도자기. 다은 세라믹입니다.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Daeun Ceramic",
-  description: "사소한 일상에 특별함을 더하는 핸드메이드 도자기. 다은 세라믹입니다.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: "Daeun Ceramic",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Daeun Ceramic",
+    // src/app/opengraph-image.jpg 파일을 두면 Next.js가 자동으로 인식해서
+    // 아래 images 없이도 og:image를 만들어주지만, 명시적으로 한 번 더
+    // 지정해서 카카오톡/문자 미리보기 등에서도 확실히 잡히게 한다.
+    images: ["/opengraph-image.jpg"],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Daeun Ceramic",
+    description: SITE_DESCRIPTION,
+    images: ["/opengraph-image.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
