@@ -40,7 +40,7 @@ export default function SiteFooter() {
           CONTACT
         </Link>
       </div>
-      <p className="label-caption">© 2026 DAEUN CERAMIC. ALL RIGHTS RESERVED.</p>
+      <p className="label-caption">© 2026 DEL OBJECTS. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
