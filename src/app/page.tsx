@@ -1,6 +1,6 @@
-import Link from "next/link";
 import CollectionGrid from "@/components/CollectionGrid";
 import HeroCarousel from "@/components/HeroCarousel";
+import ScrollToCollectionButton from "@/components/ScrollToCollectionButton";
 import { works } from "@/lib/works";
 
 export default function Home() {
@@ -13,15 +13,12 @@ export default function Home() {
 
         {/* 모바일 오버레이: 하단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
         <div className="absolute left-6 bottom-16 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
+          <ScrollToCollectionButton className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5">
+            VIEW SHOP <span aria-hidden>→</span>
+          </ScrollToCollectionButton>
           <p className="label-caption !text-[var(--color-ink)]">
             Ceramic objects by Daeun Lee
           </p>
-          <Link
-            href="#collection"
-            className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5"
-          >
-            VIEW SHOP <span aria-hidden>→</span>
-          </Link>
         </div>
 
         {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피 */}
@@ -35,12 +32,9 @@ export default function Home() {
             CERAMIC OBJECTS BY DAEUN LEE
           </p>
           <div className="w-10 border-t border-white/50 my-1" />
-          <Link
-            href="#collection"
-            className="label-caption !text-white hover:!text-white/80 transition-colors"
-          >
+          <ScrollToCollectionButton className="label-caption !text-white hover:!text-white/80 transition-colors">
             EXPLORE OBJECTS <span aria-hidden>→</span>
-          </Link>
+          </ScrollToCollectionButton>
         </div>
 
         <p className="hidden sm:block absolute left-8 lg:left-14 top-1/2 -translate-y-1/2 font-display text-white text-base leading-relaxed">
