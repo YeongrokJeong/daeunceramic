@@ -71,9 +71,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
               fill
               sizes="(min-width: 640px) 220px, 33vw"
               priority={i < 6}
-              className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${
-                work.soldOut ? "grayscale" : ""
-              }`}
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             {work.soldOut && (
               <span className="absolute top-2 left-2 text-[10px] sm:text-[11px] tracking-wide text-white bg-black/70 px-2 py-1">
