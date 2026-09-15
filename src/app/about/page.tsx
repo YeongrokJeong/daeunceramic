@@ -34,7 +34,7 @@ export default function AboutPage() {
       <p className="font-display text-2xl sm:text-3xl">ABOUT</p>
 
       <div className="mt-8 max-w-md">
-        <p className="font-display text-lg">이다은</p>
+        <p className="font-display text-lg">이다은 | Daeun Lee</p>
         <p className="label-caption mt-1">CERAMIC ARTIST</p>
 
         <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)]">
