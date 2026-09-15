@@ -79,8 +79,9 @@ export default function ReservationForm({
     <form onSubmit={handleSubmit} className="space-y-5">
       {isInquiry && (
         <p className="text-sm text-[var(--color-ink-soft)] leading-relaxed">
-          품절된 1점 한정 제작품이에요. 같은 스타일로 제작이 가능한지
-          작가님께 문의를 남겨주세요. 제작 기간은 약 2주 소요됩니다.
+          핸드메이드로 한 점씩만 만들어서, 있던 재고가 판매되었어요.
+          같은 스타일로 다시 제작이 가능한지 작가님께 문의를 남겨주세요.
+          제작 기간은 약 2주 소요됩니다.
         </p>
       )}
 
