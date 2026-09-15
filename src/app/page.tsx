@@ -9,18 +9,17 @@ export default function Home() {
       <section className="relative h-[100svh] w-full overflow-hidden">
         <HeroCarousel />
 
-        {/* 모바일 오버레이: 하단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
-        <div className="absolute left-6 bottom-4 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-2 bg-[var(--color-ink)] label-caption !text-[var(--color-bg)] px-4 py-2.5 shadow-sm"
-          >
-            VIEW SHOP <span aria-hidden>→</span>
-          </Link>
-          <p className="label-caption !text-[var(--color-ink)]">
-            Ceramic objects by Daeun Lee
-          </p>
-        </div>
+        {/* 모바일 오버레이: 캡션은 좌측 하단, 버튼은 엄지가 자연스럽게 닿는
+            우측 하단에 따로 배치(어두운 톤) */}
+        <p className="absolute left-6 bottom-4 max-w-[60%] label-caption !text-[var(--color-ink)] sm:hidden">
+          Ceramic objects by Daeun Lee
+        </p>
+        <Link
+          href="/shop"
+          className="absolute right-6 bottom-5 inline-flex items-center gap-2 bg-[var(--color-ink)] label-caption !text-[var(--color-bg)] px-4 py-2.5 shadow-sm sm:hidden"
+        >
+          VIEW SHOP <span aria-hidden>→</span>
+        </Link>
 
         {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피 */}
         <div className="absolute inset-0 bg-black/20 hidden sm:block" />
