@@ -1,28 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
 // About 페이지 전시/작업 사진 그리드. 탭하면 전체화면으로 크게 볼 수 있다.
-// 상세페이지의 ZoomableWorkImage와 같은 방식으로, 모바일 뒤로가기를 누르면
-// 페이지를 벗어나지 않고 라이트박스만 닫히도록 히스토리를 하나 쌓아둔다.
+// (예전엔 모바일 뒤로가기로도 닫히게 하려고 브라우저 히스토리를 직접
+// pushState/back()으로 조작했는데, Next.js 라우터와 충돌해서 닫기 버튼을
+// 눌러도 실제로 About 페이지를 벗어나 이전 페이지로 가버리는 버그가 있었다.
+// 그래서 히스토리 조작 없이 단순한 열림/닫힘 상태로만 처리한다.)
 export default function ExhibitionPhotoGrid({ photos }: { photos: string[] }) {
   const [index, setIndex] = useState<number | null>(null);
-  const closedByPopRef = useRef(false);
 
-  const open = (i: number) => {
-    closedByPopRef.current = false;
-    window.history.pushState({ lightbox: true }, "");
-    setIndex(i);
-  };
-
-  const close = () => {
-    setIndex(null);
-    if (!closedByPopRef.current) {
-      window.history.back();
-    }
-  };
+  const open = (i: number) => setIndex(i);
+  const close = () => setIndex(null);
 
   useEffect(() => {
     if (index === null) return;
@@ -30,17 +21,11 @@ export default function ExhibitionPhotoGrid({ photos }: { photos: string[] }) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
-    const onPopState = () => {
-      closedByPopRef.current = true;
-      setIndex(null);
-    };
 
     document.addEventListener("keydown", onKey);
-    window.addEventListener("popstate", onPopState);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      window.removeEventListener("popstate", onPopState);
       document.body.style.overflow = "";
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

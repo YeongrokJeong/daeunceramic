@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -11,8 +11,10 @@ import type { Work } from "@/lib/works";
 // 있고, 클릭하면 전체화면으로 확대해서 자세히 들여다볼 수 있다.
 // Collection 그리드에서 특정 사진을 눌러 들어온 경우, ?photo=N 쿼리로 넘어온
 // 사진이 맨 위에 먼저 보이도록 초기 인덱스로 사용한다.
-// 모바일 뒤로가기(popstate)를 눌렀을 때 상세페이지 자체를 벗어나지 않고
-// 라이트박스만 닫히도록 히스토리에 상태를 하나 쌓아둔다.
+// (예전엔 모바일 뒤로가기로도 닫히게 하려고 브라우저 히스토리를 직접
+// pushState/back()으로 조작했는데, Next.js 라우터와 충돌해서 닫기 버튼을
+// 눌러도 실제로 상세페이지를 벗어나 이전 페이지로 가버리는 버그가 있었다.
+// 그래서 히스토리 조작 없이 단순한 열림/닫힘 상태로만 처리한다.)
 export default function ZoomableWorkImage({ work }: { work: Work }) {
   const photos =
     work.images && work.images.length > 0
@@ -29,23 +31,13 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
 
   const [index, setIndex] = useState(initialIndex);
   const [open, setOpen] = useState(false);
-  // 뒤로가기로 닫힌 경우엔 history.back()을 다시 부르면 안 되므로 구분한다.
-  const closedByPopRef = useRef(false);
 
   const openLightbox = (i: number) => {
-    closedByPopRef.current = false;
     setIndex(i);
-    window.history.pushState({ lightbox: true }, "");
     setOpen(true);
   };
 
-  const closeLightbox = () => {
-    setOpen(false);
-    if (!closedByPopRef.current) {
-      // 열 때 쌓아둔 히스토리 엔트리를 되돌려 popstate와 실제 URL을 맞춘다.
-      window.history.back();
-    }
-  };
+  const closeLightbox = () => setOpen(false);
 
   const showPrev = () =>
     setIndex((i) => (i - 1 + photos.length) % photos.length);
@@ -59,17 +51,11 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
       if (e.key === "ArrowLeft") showPrev();
       if (e.key === "ArrowRight") showNext();
     };
-    const onPopState = () => {
-      closedByPopRef.current = true;
-      setOpen(false);
-    };
 
     document.addEventListener("keydown", onKey);
-    window.addEventListener("popstate", onPopState);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      window.removeEventListener("popstate", onPopState);
       document.body.style.overflow = "";
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
