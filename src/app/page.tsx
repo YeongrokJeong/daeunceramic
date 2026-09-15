@@ -25,10 +25,13 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피 */}
-        <div className="absolute inset-0 bg-black/20 hidden sm:block" />
+        {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피.
+            pointer-events-none으로 뚫어서 뒤의 히어로 사진 클릭(다음 사진
+            넘기기)이 이 장식 오버레이에 가로막히지 않게 하고, 실제 눌러야
+            하는 버튼에만 다시 pointer-events-auto를 준다. */}
+        <div className="absolute inset-0 bg-black/20 hidden sm:block pointer-events-none" />
 
-        <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4 sm:-translate-y-16 lg:-translate-y-20">
+        <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4 sm:-translate-y-16 lg:-translate-y-20 pointer-events-none">
           <h1 className="font-wordmark text-white text-7xl lg:text-8xl">
             DeL
           </h1>
@@ -38,7 +41,7 @@ export default function Home() {
           <div className="w-10 border-t border-white/50 my-1" />
           <Link
             href="/shop"
-            className="label-caption !text-white hover:!text-white/80 transition-colors"
+            className="label-caption !text-white hover:!text-white/80 transition-colors pointer-events-auto"
           >
             EXPLORE OBJECTS <span aria-hidden>→</span>
           </Link>
