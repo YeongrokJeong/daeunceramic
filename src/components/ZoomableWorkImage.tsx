@@ -92,7 +92,7 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
         />
         {work.soldOut && (
           <span className="absolute top-2 left-2 sm:top-3 sm:left-3 text-[10px] sm:text-xs tracking-[0.15em] text-white bg-black/70 px-2.5 py-1.5">
-            SOLD OUT
+            주문제작
           </span>
         )}
       </button>

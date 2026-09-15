@@ -77,7 +77,7 @@ export default async function WorkDetailPage({
 
       {/* 사진 바로 아래: 가격 + 구매 버튼(모바일/PC 공통, 스크롤 없이 바로 보임) */}
       <div className="mt-6 max-w-md">
-        {work.soldOut && <p className="label-caption mb-2">SOLD OUT</p>}
+        {work.soldOut && <p className="label-caption mb-2">주문제작</p>}
         <p className="font-display text-xl sm:text-2xl">
           {formatPrice(work.price)}
         </p>

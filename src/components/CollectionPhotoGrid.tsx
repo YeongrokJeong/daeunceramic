@@ -76,7 +76,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
             />
             {work.soldOut && (
               <span className="absolute top-2 left-2 text-[10px] sm:text-[11px] tracking-wide text-white bg-black/70 px-2 py-1">
-                SOLD OUT
+                주문제작
               </span>
             )}
           </div>
@@ -88,7 +88,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
               {work.title}
             </p>
             <p className="text-[var(--color-ink-soft)] text-[11px] sm:text-xs leading-snug mt-1">
-              {work.soldOut ? "SOLD OUT" : formatPrice(work.price)}
+              {work.soldOut ? "주문제작" : formatPrice(work.price)}
             </p>
           </div>
         </Link>
