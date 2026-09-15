@@ -76,8 +76,8 @@ const rawWorks: WorkInput[] = [
     glaze: "핸드드로잉",
     material: "도자기 (슬립캐스팅, 산화소성)",
     paletteIndex: 4,
-    image: "/works/product-16b.jpg",
-    images: ["/works/product-16b-detail.jpg"],
+    image: "/works/blue-line-latte-cup.jpg",
+    images: ["/works/blue-line-latte-cup.jpg"],
     category: "CUPS & MUGS",
   },
   {
