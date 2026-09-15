@@ -18,7 +18,12 @@ const EXHIBITION_PHOTOS = [
 const EXHIBITIONS = [
   {
     year: "2026",
-    items: [{ title: "성신여자대학교 대학원 단체전 '여름조각'" }],
+    items: [
+      {
+        title: "성신여자대학교 대학원 단체전 '여름조각'",
+        venue: "인사1010, 인사동",
+      },
+    ],
   },
   {
     year: "2019",
