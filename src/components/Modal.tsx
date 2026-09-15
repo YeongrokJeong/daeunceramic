@@ -15,6 +15,7 @@ export default function Modal({
   children: ReactNode;
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -27,9 +28,28 @@ export default function Modal({
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    // 모바일에서 키보드가 올라오면 브라우저 주소창/키보드 때문에 실제로
+    // 보이는 화면(visualViewport)이 레이아웃 전체 높이(100vh)보다 작아진다.
+    // position:fixed 요소는 기본적으로 레이아웃 뷰포트 기준이라 이 상태에서
+    // 팝업 위쪽이 화면 밖(주소창 뒤)으로 밀려 가려지는 문제가 생긴다.
+    // visualViewport의 실제 크기/오프셋을 계속 읽어와 오버레이에 그대로
+    // 반영해서, 항상 지금 실제로 보이는 영역에 딱 맞게 따라다니게 한다.
+    const vv = window.visualViewport;
+    const el = overlayRef.current;
+    const syncViewport = () => {
+      if (!el || !vv) return;
+      el.style.height = `${vv.height}px`;
+      el.style.top = `${vv.offsetTop}px`;
+    };
+    syncViewport();
+    vv?.addEventListener("resize", syncViewport);
+    vv?.addEventListener("scroll", syncViewport);
+
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = originalOverflow;
+      vv?.removeEventListener("resize", syncViewport);
+      vv?.removeEventListener("scroll", syncViewport);
     };
   }, [open, onClose]);
 
@@ -37,7 +57,8 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 overflow-y-auto flex items-start sm:items-center justify-center bg-black/50 px-4 py-8 sm:py-4"
+      ref={overlayRef}
+      className="fixed inset-x-0 top-0 h-[100dvh] z-50 overflow-y-auto flex items-start sm:items-center justify-center bg-black/50 px-4 py-8 sm:py-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
