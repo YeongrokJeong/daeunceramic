@@ -16,7 +16,7 @@ const MOBILE_SLIDES = [
 const DESKTOP_SLIDES = [
   "/works/background-03.png",
   "/works/background-01.png",
-  "/works/background-02.png",
+  "/works/background-02.jpg",
 ];
 const INTERVAL_MS = 3200;
 
