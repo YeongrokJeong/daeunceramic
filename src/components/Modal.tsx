@@ -37,7 +37,7 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+      className="fixed inset-0 z-50 overflow-y-auto flex items-start sm:items-center justify-center bg-black/50 px-4 py-8 sm:py-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -47,7 +47,7 @@ export default function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full max-w-sm bg-[var(--color-bg)] p-6 sm:p-8 animate-in"
+        className="w-full max-w-sm max-h-full overflow-y-auto bg-[var(--color-bg)] p-6 sm:p-8 animate-in mt-8 sm:mt-0"
       >
         <div className="flex items-center justify-between mb-6">
           <h2 className="font-display text-lg">{title}</h2>

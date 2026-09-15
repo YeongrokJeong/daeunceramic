@@ -74,63 +74,61 @@ export default async function WorkDetailPage({
         <ZoomableWorkImage work={work} />
       </Suspense>
 
-      <div className="mt-8 sm:mt-12 grid sm:grid-cols-5 gap-10 sm:gap-16">
-        <div className="sm:col-span-3">
-          {work.soldOut && <p className="label-caption">SOLD OUT</p>}
-
-          <p className="mt-4 text-sm leading-relaxed text-[var(--color-ink)] max-w-md">
-            {work.description}
-          </p>
-
-          <table className="mt-8 w-full text-sm border-t border-[var(--color-line)]">
-            <tbody>
-              <SpecRow label="가격" value={formatPrice(work.price)} />
-              <SpecRow label="크기" value={work.dimensions} />
-              <SpecRow label="유약" value={work.glaze} />
-              <SpecRow label="재질" value={work.material} />
-              <SpecRow
-                label="전자레인지"
-                value={work.microwaveSafe ? "사용 가능" : "사용 불가"}
-              />
-              <SpecRow
-                label="식기세척기"
-                value={work.dishwasherSafe ? "사용 가능" : "사용 불가"}
-              />
-            </tbody>
-          </table>
-
-          <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed">
-            {work.careNote}
-          </p>
-
-          {work.customOrderNote && (
-            <div className="mt-6 text-xs leading-relaxed border-t border-[var(--color-line)] pt-6">
-              <p className="text-[var(--color-ink)]">주문제작</p>
-              <p className="mt-1.5 text-[var(--color-ink-soft)]">
-                {work.customOrderNote}
-              </p>
-            </div>
-          )}
-
-          <div className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed border-t border-[var(--color-line)] pt-6">
-            <p className="text-[var(--color-ink)]">배송 · 교환/반품</p>
-            <p className="mt-1.5">
-              결제 확인 후 택배로 발송돼요. 배송비·발송 기간·교환/반품
-              규정은 작가와 연락 시 함께 안내드려요.
-            </p>
-          </div>
-
+      {/* 사진 바로 아래: 가격 + 구매 버튼(모바일/PC 공통, 스크롤 없이 바로 보임) */}
+      <div className="mt-6 max-w-md">
+        {work.soldOut && <p className="label-caption mb-2">SOLD OUT</p>}
+        <p className="font-display text-xl sm:text-2xl">
+          {formatPrice(work.price)}
+        </p>
+        <div className="mt-4">
+          <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
         </div>
+        <p className="mt-3 text-xs text-[var(--color-ink-soft)] leading-relaxed">
+          구매하기 → 이름/연락처 남기기 → 작가가 문자로 연락드려 결제·배송을
+          안내해드려요.
+        </p>
+      </div>
 
-        {/* sm 이상: 사이드바에 고정 버튼. 모바일: 아래 fixed 바로 대체(다음 블록) */}
-        <div className="hidden sm:block sm:col-span-2">
-          <div className="sm:sticky sm:top-6">
-            <p className="text-xs text-[var(--color-ink-soft)] leading-relaxed mb-4">
-              구매하기 → 이름/연락처 남기기 → 작가가 문자로 연락드려
-              결제·배송을 안내해드려요.
+      <div className="mt-10 sm:mt-12 max-w-md">
+        <p className="text-sm leading-relaxed text-[var(--color-ink)]">
+          {work.description}
+        </p>
+
+        <table className="mt-8 w-full text-sm border-t border-[var(--color-line)]">
+          <tbody>
+            <SpecRow label="크기" value={work.dimensions} />
+            <SpecRow label="유약" value={work.glaze} />
+            <SpecRow label="재질" value={work.material} />
+            <SpecRow
+              label="전자레인지"
+              value={work.microwaveSafe ? "사용 가능" : "사용 불가"}
+            />
+            <SpecRow
+              label="식기세척기"
+              value={work.dishwasherSafe ? "사용 가능" : "사용 불가"}
+            />
+          </tbody>
+        </table>
+
+        <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed">
+          {work.careNote}
+        </p>
+
+        {work.customOrderNote && (
+          <div className="mt-6 text-xs leading-relaxed border-t border-[var(--color-line)] pt-6">
+            <p className="text-[var(--color-ink)]">주문제작</p>
+            <p className="mt-1.5 text-[var(--color-ink-soft)]">
+              {work.customOrderNote}
             </p>
-            <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
           </div>
+        )}
+
+        <div className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed border-t border-[var(--color-line)] pt-6">
+          <p className="text-[var(--color-ink)]">배송 · 교환/반품</p>
+          <p className="mt-1.5">
+            결제 확인 후 택배로 발송돼요. 배송비·발송 기간·교환/반품
+            규정은 작가와 연락 시 함께 안내드려요.
+          </p>
         </div>
       </div>
 
