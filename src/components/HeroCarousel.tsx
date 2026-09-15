@@ -6,6 +6,8 @@ import Image from "next/image";
 // 히어로 배경 슬라이드쇼. 모바일/PC 각각 이미지 세트를 일정 간격으로
 // 크로스페이드한다. PC는 좌측 하단 "01 / 0N" 인디케이터도 함께 관리한다.
 // 화면(사진 영역)을 탭/클릭하면 바로 다음 사진으로 넘어간다.
+// 우클릭 저장/드래그/모바일 길게 눌러 저장을 막아둔다(완벽 차단은 아니고
+// 스크린샷·개발자도구로는 여전히 가능 — 일반적인 저장 경로만 막는 수준).
 const MOBILE_SLIDES = [
   "/works/banner-mobile.png",
   "/works/banner-mobile-02.jpg",
@@ -69,7 +71,9 @@ export default function HeroCarousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover absolute inset-0 sm:hidden transition-opacity duration-700 ease-in-out cursor-pointer ${
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+          className={`object-cover absolute inset-0 sm:hidden transition-opacity duration-700 ease-in-out cursor-pointer select-none [-webkit-touch-callout:none] [-webkit-user-drag:none] ${
             i === mobileIndex ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -83,7 +87,9 @@ export default function HeroCarousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover absolute inset-0 hidden sm:block transition-opacity duration-700 ease-in-out cursor-pointer ${
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+          className={`object-cover absolute inset-0 hidden sm:block transition-opacity duration-700 ease-in-out cursor-pointer select-none [-webkit-touch-callout:none] [-webkit-user-drag:none] ${
             i === desktopIndex ? "opacity-100" : "opacity-0"
           }`}
         />
