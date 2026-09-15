@@ -8,12 +8,20 @@ export default function Home() {
       {/* 작은 히어로 배너 + 바로 아래 전체 컬렉션. */}
       <section className="relative h-[20vh] sm:h-[23vh] w-full overflow-hidden">
         <Image
+          src="/works/banner-mobile.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover sm:hidden"
+        />
+        <Image
           src="/works/banner.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover hidden sm:block"
         />
         <div className="absolute inset-0 bg-black/35" />
         <div className="absolute inset-0 flex items-center px-5 sm:px-8 max-w-5xl mx-auto">
