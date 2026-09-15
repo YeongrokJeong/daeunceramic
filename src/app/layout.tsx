@@ -3,6 +3,7 @@ import { Noto_Sans_KR, Noto_Serif_KR, Lora } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const sans = Noto_Sans_KR({
@@ -44,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-ink)] antialiased">
         <SiteHeader />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <SiteFooter />
         <ScrollToTopButton />
       </body>

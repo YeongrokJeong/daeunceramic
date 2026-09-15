@@ -65,6 +65,22 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* 페이지 전환 시 부드러운 진입 애니메이션(PageTransition 컴포넌트에서 사용). */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-fade {
+  animation: page-fade-in 380ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
