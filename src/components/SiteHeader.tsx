@@ -27,17 +27,23 @@ export default function SiteHeader() {
           : "z-40 sticky top-0 bg-[var(--color-bg)] border-b border-[var(--color-line)]"
       }
     >
-      <div className="px-5 sm:px-8 py-5 sm:py-6 max-w-5xl mx-auto w-full flex items-center justify-between">
+      <div
+        className={
+          isHome
+            ? "px-5 sm:px-8 lg:px-14 py-5 sm:py-6 w-full flex items-center justify-between sm:max-w-none max-w-5xl mx-auto sm:mx-0"
+            : "px-5 sm:px-8 py-5 sm:py-6 max-w-5xl mx-auto w-full flex items-center justify-between"
+        }
+      >
         <Link href="/" className="leading-none">
           <Image
             src="/logo.png"
             alt="DeL"
-            width={72}
-            height={72}
+            width={96}
+            height={96}
             priority
             className={
               isHome
-                ? "h-8 w-8 sm:h-9 sm:w-9 object-contain sm:invert"
+                ? "h-8 w-8 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain sm:invert"
                 : "h-8 w-8 sm:h-9 sm:w-9 object-contain"
             }
           />

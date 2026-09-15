@@ -48,15 +48,8 @@ export default function Home() {
         {/* sm 이상 오버레이: 은은한 다크 톤 + 중앙 워드마크/카피 */}
         <div className="absolute inset-0 bg-black/20 hidden sm:block" />
 
-        <div className="absolute left-8 lg:left-14 top-1/2 -translate-y-1/2 hidden sm:flex flex-col items-start text-left gap-4 max-w-md">
-          <p className="font-display text-white text-base leading-relaxed">
-            Clay,
-            <br />
-            Form,
-            <br />
-            and Chance.
-          </p>
-          <h1 className="font-display text-white text-8xl lg:text-9xl tracking-wide">
+        <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center text-center px-8 gap-4">
+          <h1 className="font-display text-white text-7xl lg:text-8xl tracking-wide">
             DeL
           </h1>
           <p className="label-caption !text-white/85">
@@ -70,6 +63,14 @@ export default function Home() {
             EXPLORE OBJECTS <span aria-hidden>→</span>
           </Link>
         </div>
+
+        <p className="hidden sm:block absolute left-8 lg:left-14 top-1/2 -translate-y-1/2 font-display text-white text-base leading-relaxed">
+          Clay,
+          <br />
+          Form,
+          <br />
+          and Chance.
+        </p>
 
         <div className="hidden sm:flex items-center gap-3 absolute left-8 lg:left-14 bottom-8">
           <span className="label-caption !text-white/80">01 / 03</span>
