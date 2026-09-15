@@ -101,14 +101,12 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
           width={1600}
           height={1600}
           sizes="(min-width: 640px) 640px, 100vw"
-          className={`w-full h-auto ${work.soldOut ? "grayscale" : ""}`}
+          className="w-full h-auto"
         />
         {work.soldOut && (
-          <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
-            <span className="text-white text-sm tracking-[0.2em]">
-              SOLD OUT
-            </span>
-          </div>
+          <span className="absolute top-2 left-2 sm:top-3 sm:left-3 text-[10px] sm:text-xs tracking-[0.15em] text-white bg-black/70 px-2.5 py-1.5">
+            SOLD OUT
+          </span>
         )}
       </button>
 
@@ -185,14 +183,19 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
           )}
 
           <div
-            className="relative w-full h-full max-w-3xl"
+            className="w-full h-full max-w-3xl flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <WorkImage
-              paletteIndex={work.paletteIndex}
-              title={work.title}
-              image={photos[index]}
-              className="h-full w-full"
+            {/* fill 기반 WorkImage 대신 실제 크기로 렌더링해서, 부모의 높이 계산이
+                꼬여도(flex 안에서 h-full이 과하게 커지는 문제) 이미지 자체가
+                max-h/max-w로 항상 화면 안에 딱 맞게 줄어들도록 한다. */}
+            <Image
+              src={photos[index]}
+              alt={work.title}
+              width={1600}
+              height={1600}
+              sizes="100vw"
+              className="max-h-full max-w-full w-auto h-auto object-contain"
             />
           </div>
         </div>
