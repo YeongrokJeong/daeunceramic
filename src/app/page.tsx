@@ -12,8 +12,10 @@ export default function Home() {
         {/* 모바일 오버레이: 캡션은 좌측, 버튼은 엄지가 자연스럽게 닿는 우측에
             같은 줄(flex)로 배치해서 높이가 자동으로 맞게 한다(어두운 톤). */}
         <div className="absolute inset-x-6 bottom-5 flex items-center justify-between gap-3 sm:hidden">
-          <p className="max-w-[55%] label-caption !text-[var(--color-ink)]">
-            Ceramic objects by Daeun Lee
+          <p className="max-w-[55%] text-left label-caption !text-[var(--color-ink)]">
+            Ceramic objects
+            <br />
+            by Daeun Lee
           </p>
           <Link
             href="/shop"
