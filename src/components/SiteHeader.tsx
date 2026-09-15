@@ -39,8 +39,8 @@ export default function SiteHeader() {
             priority
             className={
               isHome
-                ? "h-8 w-8 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain sm:invert"
-                : "h-8 w-8 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain"
+                ? "h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain sm:invert"
+                : "h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain"
             }
           />
         </Link>
