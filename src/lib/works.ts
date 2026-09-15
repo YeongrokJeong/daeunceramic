@@ -108,6 +108,7 @@ const rawWorks: WorkInput[] = [
     image: "/works/nebula-cup-s-lavender.png",
     images: ["/works/nebula-cup-s-lavender.png"],
     category: "CUPS & MUGS",
+    soldOut: true,
   },
   {
     id: "2b",
