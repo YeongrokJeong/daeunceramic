@@ -99,13 +99,9 @@ const rawWorks: WorkInput[] = [
     technique: "Colored slip, drain casting",
     firing: "Oxidation firing, 1250°C",
     paletteIndex: 1,
-    // TODO: 라벤더 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 임시 사용)
+    // TODO: 라벤더 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 1장만 임시 사용)
     image: "/works/product-17.jpg",
-    images: [
-      "/works/product-17-detail.jpg",
-      "/works/product-18-detail.jpg",
-      "/works/product-19-detail.jpg",
-    ],
+    images: ["/works/product-17.jpg"],
     category: "CUPS & MUGS",
   },
   {
@@ -123,13 +119,8 @@ const rawWorks: WorkInput[] = [
     technique: "Colored slip, drain casting",
     firing: "Reduction firing, 1250°C",
     paletteIndex: 1,
-    // TODO: 블루 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 임시 사용)
-    image: "/works/product-17.jpg",
-    images: [
-      "/works/product-17-detail.jpg",
-      "/works/product-18-detail.jpg",
-      "/works/product-19-detail.jpg",
-    ],
+    image: "/works/nebula-cup-s-blue.png",
+    images: ["/works/nebula-cup-s-blue.png"],
     category: "CUPS & MUGS",
   },
   {
@@ -147,13 +138,9 @@ const rawWorks: WorkInput[] = [
     technique: "Colored slip, drain casting",
     firing: "Oxidation firing, 1250°C",
     paletteIndex: 1,
-    // TODO: 블랙 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 임시 사용)
+    // TODO: 블랙 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 1장만 임시 사용)
     image: "/works/product-17.jpg",
-    images: [
-      "/works/product-17-detail.jpg",
-      "/works/product-18-detail.jpg",
-      "/works/product-19-detail.jpg",
-    ],
+    images: ["/works/product-17.jpg"],
     category: "CUPS & MUGS",
   },
   {
