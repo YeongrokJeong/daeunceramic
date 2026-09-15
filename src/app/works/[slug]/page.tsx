@@ -90,15 +90,18 @@ export default async function WorkDetailPage({
       </div>
 
       <div className="mt-10 sm:mt-12 max-w-md">
-        <p className="text-sm leading-relaxed text-[var(--color-ink)]">
+        <p className="text-sm leading-relaxed text-[var(--color-ink)] whitespace-pre-line">
           {work.description}
         </p>
 
         <table className="mt-8 w-full text-sm border-t border-[var(--color-line)]">
           <tbody>
-            <SpecRow label="크기" value={work.dimensions} />
-            <SpecRow label="유약" value={work.glaze} />
-            <SpecRow label="재질" value={work.material} />
+            <SpecRow label="Size" value={work.dimensions} />
+            <SpecRow label="Capacity" value={work.capacity} />
+            <SpecRow label="Material" value={work.material} />
+            <SpecRow label="Glaze" value={work.glaze} />
+            <SpecRow label="Technique" value={work.technique} />
+            <SpecRow label="Firing" value={work.firing} />
           </tbody>
         </table>
 
@@ -138,7 +141,8 @@ export default async function WorkDetailPage({
   );
 }
 
-function SpecRow({ label, value }: { label: string; value: string }) {
+function SpecRow({ label, value }: { label: string; value?: string }) {
+  if (!value) return null;
   return (
     <tr className="border-b border-[var(--color-line)]">
       <th

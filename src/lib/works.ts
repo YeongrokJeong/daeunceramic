@@ -17,7 +17,10 @@ export type Work = {
   shortDescription: string;
   description: string;
   dimensions: string; // e.g. "지름 12cm x 높이 8cm"
-  glaze: string; // 유약/색감
+  capacity?: string; // 용량 (있는 상품만 표시)
+  glaze?: string; // 유약/색감 (있는 상품만 표시)
+  technique?: string; // 성형/제작 기법 (있는 상품만 표시)
+  firing?: string; // 소성 방식/온도 (있는 상품만 표시)
   paletteIndex: number; // image가 없을 때 쓰는 플레이스홀더 그라디언트 선택용
   image?: string; // public/ 기준 실제 상품 사진 경로 (카드/리스트용 정사각 패딩 버전)
   images?: string[]; // 상세페이지 갤러리용 원본 비율 사진 목록(여백 없음). 1장 이상.
@@ -89,9 +92,12 @@ const rawWorks: WorkInput[] = [
     price: 30000,
     shortDescription: "다이아몬드 창에 마블 무늬를 넣은 컵 (S, 50ml)",
     description:
-      "컵 표면에 다이아몬드 모양 창을 내고, 그 안에 별과 성운을 닮은 마블(대리석) 무늬를 채워 넣은 작품입니다. 무늬는 제품마다 조금씩 달라요.",
-    dimensions: "지름 7cm x 높이 9cm (50ml)",
-    glaze: "마블 유약",
+      "백자 위에 서로 다른 색의 슬립을 흘려 만든 성운 시리즈의 작은 잔입니다.\n흐르는 재료가 자연스럽게 만나며 만들어지는 무늬를 그대로 남겨, 모든 잔이 서로 다른 표정을 가집니다.",
+    dimensions: "Ø 55 × H 60–65 mm",
+    capacity: "약 50 ml",
+    material: "Porcelain",
+    technique: "Colored slip, drain casting",
+    firing: "Reduction firing, 1250°C",
     paletteIndex: 1,
     image: "/works/product-17.jpg",
     images: [
