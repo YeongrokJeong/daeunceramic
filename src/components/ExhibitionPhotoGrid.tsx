@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 // About 페이지 전시/작업 사진 그리드. 탭하면 전체화면으로 크게 볼 수 있다.
@@ -67,35 +68,38 @@ export default function ExhibitionPhotoGrid({ photos }: { photos: string[] }) {
         ))}
       </div>
 
-      {index !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={close}
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
-        >
-          <button
-            type="button"
-            onClick={close}
-            aria-label="닫기"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 bg-black/70 text-white/90 hover:text-white hover:bg-black/85 text-xs tracking-[0.2em] px-3 py-2 cursor-pointer transition-colors"
-          >
-            CLOSE ✕
-          </button>
+      {index !== null &&
+        createPortal(
           <div
-            className="relative w-full h-full max-w-3xl"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            onClick={close}
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
           >
-            <Image
-              src={photos[index]}
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-contain"
-            />
-          </div>
-        </div>
-      )}
+            <button
+              type="button"
+              onClick={close}
+              aria-label="닫기"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 bg-black/70 text-white/90 hover:text-white hover:bg-black/85 text-xs tracking-[0.2em] px-3 py-2 cursor-pointer transition-colors"
+            >
+              CLOSE ✕
+            </button>
+            <div
+              className="w-full h-full max-w-3xl flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={photos[index]}
+                alt=""
+                width={1600}
+                height={1600}
+                sizes="100vw"
+                className="max-h-full max-w-full w-auto h-auto object-contain"
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

@@ -9,6 +9,7 @@ const EXHIBITION_PHOTOS = [
   "/about/exhibition-01.jpg",
   "/about/exhibition-02.jpg",
   "/about/exhibition-03.jpg",
+  "/about/exhibition-04.jpg",
 ];
 
 // 작가 소개 문구(작가님 제공, 실제 텍스트).
