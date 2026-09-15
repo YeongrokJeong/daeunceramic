@@ -32,10 +32,13 @@ export async function sendReservationSms(input: ReservationInput) {
 }
 
 function buildMessageText(input: ReservationInput) {
-  return [
-    "[이다은 도자기 판매예약]",
+  const label = input.message ? "[이다은 도자기 제작문의]" : "[이다은 도자기 판매예약]";
+  const lines = [
+    label,
     `상품: ${input.workTitle}`,
     `이름: ${input.name}`,
     `연락처: ${input.phone}`,
-  ].join("\n");
+  ];
+  if (input.message) lines.push(`메모: ${input.message}`);
+  return lines.join("\n");
 }

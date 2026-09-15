@@ -20,13 +20,19 @@ export default function PurchaseButton({
 
   if (soldOut) {
     return (
-      <button
-        type="button"
-        disabled
-        className={`${width} border border-[var(--color-line)] text-[var(--color-ink-soft)] py-3.5 text-sm tracking-wide cursor-not-allowed`}
-      >
-        SOLD OUT
-      </button>
+      <>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={`${width} border border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] py-4 text-base font-medium tracking-wide transition-colors cursor-pointer`}
+        >
+          SOLD OUT · 제작문의 →
+        </button>
+
+        <Modal open={open} onClose={() => setOpen(false)} title="제작문의">
+          <ReservationForm workSlug={workSlug} mode="inquiry" />
+        </Modal>
+      </>
     );
   }
 

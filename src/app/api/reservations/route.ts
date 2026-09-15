@@ -13,6 +13,8 @@ const bodySchema = z.object({
     .trim()
     .regex(/^01[0-9]-?\d{3,4}-?\d{4}$/, "휴대폰 번호 형식을 확인해주세요."),
   workSlug: z.string().min(1),
+  // 품절 상품의 "제작문의" 등, 구매 예약과 구분해야 하는 경우에만 넘어온다.
+  message: z.string().trim().max(200).optional(),
 });
 
 export async function POST(request: Request) {
@@ -44,6 +46,7 @@ export async function POST(request: Request) {
     workId: work.id,
     workTitle: work.title,
     quantity: 1,
+    message: parsed.data.message,
   };
 
   try {

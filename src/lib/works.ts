@@ -122,12 +122,13 @@ const rawWorks: WorkInput[] = [
     image: "/works/nebula-cup-s-blue.png",
     images: ["/works/nebula-cup-s-blue.png"],
     category: "CUPS & MUGS",
+    soldOut: true,
   },
   {
     id: "2c",
     slug: "nebula-cup-s-black",
-    title: "성운 컵 S - 블랙",
-    titleEn: "Nebula Cup S - Black",
+    title: "성운 컵 S - 퍼플블랙",
+    titleEn: "Nebula Cup S - Purple Black",
     price: 30000,
     shortDescription: "다이아몬드 창에 마블 무늬를 넣은 컵 (S, 50ml)",
     description:
@@ -138,10 +139,10 @@ const rawWorks: WorkInput[] = [
     technique: "Colored slip, drain casting",
     firing: "Oxidation firing, 1250°C",
     paletteIndex: 1,
-    // TODO: 블랙 색상 전용 사진 받으면 교체 (지금은 기존 성운컵 사진 1장만 임시 사용)
-    image: "/works/product-17.jpg",
-    images: ["/works/product-17.jpg"],
+    image: "/works/nebula-cup-s-black.png",
+    images: ["/works/nebula-cup-s-black.png"],
     category: "CUPS & MUGS",
+    soldOut: true,
   },
   {
     id: "3a",

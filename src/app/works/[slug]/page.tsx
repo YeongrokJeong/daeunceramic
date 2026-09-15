@@ -84,8 +84,9 @@ export default async function WorkDetailPage({
           <PurchaseButton workSlug={work.slug} soldOut={work.soldOut} />
         </div>
         <p className="mt-3 text-xs text-[var(--color-ink-soft)] leading-relaxed">
-          구매하기 → 이름/연락처 남기기 → 작가가 문자로 연락드려 결제·배송을
-          안내해드려요.
+          {work.soldOut
+            ? "1점 한정 제작품이라 품절되었어요. 같은 스타일로 제작 가능한지 문의를 남겨주시면 작가님이 연락드려요."
+            : "구매하기 → 이름/연락처 남기기 → 작가가 문자로 연락드려 결제·배송을 안내해드려요."}
         </p>
       </div>
 
