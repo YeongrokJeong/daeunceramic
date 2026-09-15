@@ -14,7 +14,7 @@ const IN_PROGRESS_WORKS = [
     title: "Circuit Vase",
     meta: "Porcelain, cobalt decoration, 2026",
     status: "In progress",
-    image: "/works/circuit-vase.jpg",
+    image: "/works/circuit-vase.png",
   },
   {
     id: "02",
