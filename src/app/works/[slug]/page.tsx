@@ -99,16 +99,14 @@ export default async function WorkDetailPage({
             <SpecRow label="크기" value={work.dimensions} />
             <SpecRow label="유약" value={work.glaze} />
             <SpecRow label="재질" value={work.material} />
-            <SpecRow
-              label="전자레인지"
-              value={work.microwaveSafe ? "사용 가능" : "사용 불가"}
-            />
-            <SpecRow
-              label="식기세척기"
-              value={work.dishwasherSafe ? "사용 가능" : "사용 불가"}
-            />
           </tbody>
         </table>
+
+        {/* 전자레인지/식기세척기는 참고 정보 수준이라 스펙 표 대신 작은 텍스트로 */}
+        <p className="mt-3 text-xs text-[var(--color-ink-soft)]">
+          전자레인지 {work.microwaveSafe ? "사용 가능" : "사용 불가"} · 식기세척기{" "}
+          {work.dishwasherSafe ? "사용 가능" : "사용 불가"}
+        </p>
 
         <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed">
           {work.careNote}
