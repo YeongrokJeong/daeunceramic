@@ -13,17 +13,39 @@ const EXHIBITION_PHOTOS = [
 
 // 작가 소개 문구(작가님 제공, 실제 텍스트).
 
-// 전시 이력(사용자 제공, 실제 정보). 연도별로 묶어서 표시.
+// 전시 이력(사용자 제공, 실제 정보). 연도별로 묶고, 장소는 옅은 톤으로
+// 제목 옆에 붙여 담백하게 보여준다.
 const EXHIBITIONS = [
-  { year: "2026", items: ["성신여자대학교 대학원 단체전 '여름조각'"] },
-  { year: "2019", items: ["'일상도예' 판매전 작가 참가"] },
+  {
+    year: "2026",
+    items: [{ title: "성신여자대학교 대학원 단체전 '여름조각'" }],
+  },
+  {
+    year: "2019",
+    items: [
+      { title: "'일상도예' 판매전 작가 참가", venue: "얀앤홉 갤러리, 위례신도시" },
+    ],
+  },
   {
     year: "2018",
-    items: ["도자 공예 졸업 전시", "전국 여류 도예 공모전 '특선'"],
+    items: [
+      {
+        title: "도자 공예 졸업 전시",
+        venue: "성신여자대학교 공예과, B.A.",
+      },
+      { title: "전국 여류 도예 공모전 '특선'" },
+      { title: "공예트렌드페어 부스 'DAMI' 참가", venue: "COEX, 삼성동" },
+    ],
   },
   {
     year: "2017",
-    items: ["공예트렌드페어 부스 참가", "서울 유니브 엑스포 SeoulUnivExpo 참가"],
+    items: [
+      { title: "공예트렌드페어 부스 'DAMI' 참가", venue: "COEX, 삼성동" },
+      {
+        title: "서울 유니브 엑스포 Seoul Univ Expo 참가",
+        venue: "광화문",
+      },
+    ],
   },
 ];
 
@@ -52,8 +74,17 @@ export default function AboutPage() {
                 </span>
                 <div className="space-y-1">
                   {ex.items.map((item) => (
-                    <p key={item} className="text-[var(--color-ink)] leading-relaxed">
-                      {item}
+                    <p
+                      key={item.title}
+                      className="text-[var(--color-ink)] leading-relaxed"
+                    >
+                      {item.title}
+                      {item.venue && (
+                        <span className="text-[var(--color-ink-soft)]">
+                          {" "}
+                          · {item.venue}
+                        </span>
+                      )}
                     </p>
                   ))}
                 </div>
