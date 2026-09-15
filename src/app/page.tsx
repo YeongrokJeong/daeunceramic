@@ -13,7 +13,7 @@ export default function Home() {
         <div className="absolute left-6 bottom-4 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5"
+            className="inline-flex items-center gap-2 bg-[var(--color-ink)] label-caption !text-[var(--color-bg)] px-4 py-2.5 shadow-sm"
           >
             VIEW SHOP <span aria-hidden>→</span>
           </Link>

@@ -5,7 +5,11 @@ import Image from "next/image";
 
 // 히어로 배경 슬라이드쇼. 모바일/PC 각각 이미지 세트를 일정 간격으로
 // 크로스페이드한다. PC는 좌측 하단 "01 / 0N" 인디케이터도 함께 관리한다.
-const MOBILE_SLIDES = ["/works/banner-mobile.png", "/works/banner-mobile-02.jpg"];
+const MOBILE_SLIDES = [
+  "/works/banner-mobile.png",
+  "/works/banner-mobile-02.jpg",
+  "/works/banner-mobile-03.png",
+];
 const DESKTOP_SLIDES = [
   "/works/background-03.png",
   "/works/background-01.png",
