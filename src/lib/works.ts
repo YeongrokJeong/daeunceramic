@@ -12,6 +12,7 @@ export type Work = {
   id: string;
   slug: string;
   title: string;
+  titleEn: string; // SHOP 그리드에 좌측(영문)으로 표시
   price: number; // KRW
   shortDescription: string;
   description: string;
@@ -49,6 +50,7 @@ const rawWorks: WorkInput[] = [
     id: "1",
     slug: "blue-dot-glaze-latte-cup",
     title: "블루닷글레이즈 라떼컵",
+    titleEn: "Blue Dot Glaze Latte Cup",
     price: 35000,
     shortDescription: "흐름유 무늬 라떼컵",
     description:
@@ -65,6 +67,7 @@ const rawWorks: WorkInput[] = [
     id: "1b",
     slug: "blue-line-latte-cup",
     title: "블루라인 라떼컵",
+    titleEn: "Blue Line Latte Cup",
     price: 35000,
     shortDescription: "핸드드로잉 무늬 라떼컵",
     description:
@@ -81,6 +84,7 @@ const rawWorks: WorkInput[] = [
     id: "2",
     slug: "nebula-cup",
     title: "성운컵",
+    titleEn: "Nebula Cup",
     price: 26000,
     shortDescription: "다이아몬드 창에 마블 무늬를 넣은 컵",
     description:
@@ -102,6 +106,7 @@ const rawWorks: WorkInput[] = [
     id: "3",
     slug: "marble-cup",
     title: "마블컵",
+    titleEn: "Marble Cup",
     price: 26000,
     shortDescription: "다이아몬드 창에 마블 무늬를 넣은 컵",
     description:

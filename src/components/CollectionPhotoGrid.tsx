@@ -6,8 +6,8 @@ import Image from "next/image";
 import type { Work } from "@/lib/works";
 
 // 인스타그램 프로필 그리드처럼, 상품별 사진을 한 화면에서 3열로 모아
-// 미리 볼 수 있게 한다. 쇼핑몰 그리드이므로 사진마다 이름/가격을 항상
-// 보여준다(일부 타일에만 있으면 판매 페이지처럼 안 보여서 전부 표시).
+// 미리 볼 수 있게 한다. 가격은 상세페이지에서만 보여주고, 그리드에서는
+// 사진 아래 제품명만(좌: 영문, 우: 국문) 깔끔하게 표시한다.
 // 사진을 탭하면 해당 상품의 상세페이지로 이동하는데, 방금 누른 그 사진이
 // 상세페이지 맨 위에 먼저 보이도록 몇 번째 사진인지(photo 쿼리)를 함께 넘긴다.
 // 상세페이지에서 뒤로 돌아왔을 때 방금 봤던 상품의 첫 번째 사진 위치로
@@ -49,7 +49,7 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-0.5 sm:gap-1">
+    <div className="grid grid-cols-3 gap-0.5 sm:gap-1 bg-[#c0bdb7]">
       {tiles.map(({ work, src, photoIndex, isFirst }, i) => (
         <Link
           key={`${work.id}-${src}`}
@@ -62,26 +62,31 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
               // 무시
             }
           }}
-          className="group relative aspect-square overflow-hidden bg-[var(--color-bg-soft)] block"
+          className="group block"
         >
-          <Image
-            src={src}
-            alt={work.title}
-            fill
-            sizes="(min-width: 640px) 220px, 33vw"
-            priority={i < 6}
-            className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${
-              work.soldOut ? "grayscale" : ""
-            }`}
-          />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-2 py-2 sm:px-3 sm:py-2.5">
-            <p className="text-white text-[11px] sm:text-xs leading-snug truncate">
-              {work.title}
+          <div className="relative aspect-square overflow-hidden bg-[#c0bdb7]">
+            <Image
+              src={src}
+              alt={work.title}
+              fill
+              sizes="(min-width: 640px) 220px, 33vw"
+              priority={i < 6}
+              className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${
+                work.soldOut ? "grayscale" : ""
+              }`}
+            />
+            {work.soldOut && (
+              <span className="absolute top-2 left-2 text-[10px] sm:text-[11px] tracking-wide text-white bg-black/70 px-2 py-1">
+                SOLD OUT
+              </span>
+            )}
+          </div>
+          <div className="flex items-baseline justify-between gap-2 bg-[#c0bdb7] px-2 py-2 sm:px-3 sm:py-2.5">
+            <p className="text-black text-[10px] sm:text-[11px] leading-snug truncate">
+              {work.titleEn}
             </p>
-            <p className="text-white/85 text-[10px] sm:text-[11px] mt-0.5">
-              {work.soldOut
-                ? "SOLD OUT"
-                : `${work.price.toLocaleString("ko-KR")}원`}
+            <p className="text-black text-[10px] sm:text-[11px] leading-snug truncate shrink-0">
+              {work.title}
             </p>
           </div>
         </Link>
