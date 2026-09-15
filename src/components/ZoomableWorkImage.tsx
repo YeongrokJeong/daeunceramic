@@ -11,10 +11,13 @@ import type { Work } from "@/lib/works";
 // 있고, 클릭하면 전체화면으로 확대해서 자세히 들여다볼 수 있다.
 // Collection 그리드에서 특정 사진을 눌러 들어온 경우, ?photo=N 쿼리로 넘어온
 // 사진이 맨 위에 먼저 보이도록 초기 인덱스로 사용한다.
-// (예전엔 모바일 뒤로가기로도 닫히게 하려고 브라우저 히스토리를 직접
-// pushState/back()으로 조작했는데, Next.js 라우터와 충돌해서 닫기 버튼을
-// 눌러도 실제로 상세페이지를 벗어나 이전 페이지로 가버리는 버그가 있었다.
-// 그래서 히스토리 조작 없이 단순한 열림/닫힘 상태로만 처리한다.)
+// 모바일 하드웨어 뒤로가기를 누르면 상세페이지를 벗어나지 않고 라이트박스만
+// 닫히도록, 열 때 히스토리에 같은 URL의 더미 엔트리를 하나 쌓아둔다.
+// (예전 버그: 닫기 버튼을 눌렀을 때도 우리가 직접 history.back()을 호출했더니
+// Next.js 라우터와 충돌해서 실제로 페이지를 벗어나버렸다. 그래서 지금은
+// "열 때 pushState" + "popstate 감지해서 닫기"만 하고, 닫기 버튼/바깥
+// 클릭/ESC로 닫을 땐 history.back()을 절대 호출하지 않는다 — 남는 더미
+// 엔트리는 다음 실제 뒤로가기 때 조용히 소비될 뿐 아무 화면 변화가 없다.)
 export default function ZoomableWorkImage({ work }: { work: Work }) {
   const photos =
     work.images && work.images.length > 0
@@ -34,6 +37,7 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
 
   const openLightbox = (i: number) => {
     setIndex(i);
+    window.history.pushState({ lightbox: true }, "");
     setOpen(true);
   };
 
@@ -51,11 +55,14 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
       if (e.key === "ArrowLeft") showPrev();
       if (e.key === "ArrowRight") showNext();
     };
+    const onPopState = () => setOpen(false);
 
     document.addEventListener("keydown", onKey);
+    window.addEventListener("popstate", onPopState);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
+      window.removeEventListener("popstate", onPopState);
       document.body.style.overflow = "";
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
