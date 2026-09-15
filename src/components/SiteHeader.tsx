@@ -35,11 +35,7 @@ export default function SiteHeader() {
             width={72}
             height={72}
             priority
-            className={[
-              "h-8 w-8 sm:h-9 sm:w-9 object-contain",
-              // 모바일 홈 히어로(어두운 이미지) 위에서는 로고를 흰색으로 반전
-              isHome ? "invert sm:invert-0" : "",
-            ].join(" ")}
+            className="h-8 w-8 sm:h-9 sm:w-9 object-contain"
           />
         </Link>
         <nav className="flex gap-x-5">
@@ -47,12 +43,7 @@ export default function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className={[
-                "label-caption transition-colors",
-                isHome
-                  ? "!text-white/90 hover:!text-white sm:!text-[var(--color-ink-soft)] sm:hover:!text-[var(--color-ink)]"
-                  : "hover:text-[var(--color-ink)]",
-              ].join(" ")}
+              className="label-caption hover:text-[var(--color-ink)] transition-colors"
             >
               {link.label}
             </Link>
