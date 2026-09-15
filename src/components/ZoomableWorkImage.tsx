@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import WorkImage from "@/components/WorkImage";
@@ -136,13 +137,14 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
         </div>
       )}
 
-      {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={closeLightbox}
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
-        >
+      {open &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            onClick={closeLightbox}
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+          >
           <button
             type="button"
             onClick={closeLightbox}
@@ -198,7 +200,8 @@ export default function ZoomableWorkImage({ work }: { work: Work }) {
               className="max-h-full max-w-full w-auto h-auto object-contain"
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
