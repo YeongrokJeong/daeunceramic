@@ -15,7 +15,7 @@ const DESKTOP_SLIDES = [
   "/works/background-01.png",
   "/works/background-02.png",
 ];
-const INTERVAL_MS = 5500;
+const INTERVAL_MS = 3200;
 
 function useSlideIndex(count: number) {
   const [index, setIndex] = useState(0);
@@ -42,7 +42,7 @@ export default function HeroCarousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover absolute inset-0 sm:hidden transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover absolute inset-0 sm:hidden transition-opacity duration-700 ease-in-out ${
             i === mobileIndex ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -56,7 +56,7 @@ export default function HeroCarousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover absolute inset-0 hidden sm:block transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover absolute inset-0 hidden sm:block transition-opacity duration-700 ease-in-out ${
             i === desktopIndex ? "opacity-100" : "opacity-0"
           }`}
         />
