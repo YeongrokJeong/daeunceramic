@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import CollectionGrid from "@/components/CollectionGrid";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -10,32 +9,16 @@ export default function Home() {
       {/* 모바일: 풀스크린 히어로(헤더가 위에 투명하게 겹쳐짐) + 하단 문구/버튼.
           sm 이상: 대형 풀스크린 히어로 + 중앙 워드마크/카피, 좌측·하단 코너 캡션. */}
       <section className="relative h-[100svh] sm:h-[92vh] w-full overflow-hidden">
-        <Image
-          src="/works/banner-mobile.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover sm:hidden"
-        />
         <HeroCarousel />
 
-        {/* 모바일 오버레이: 하단이 어두워지는 그라디언트 + 문구/버튼 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent sm:hidden" />
-        <div className="absolute inset-0 flex flex-col justify-end px-6 pb-14 sm:hidden">
-          <p className="label-caption !text-white/80 mb-3">
-            Ceramic objects by Daeun Lee
-          </p>
-          <h1 className="font-display text-white text-2xl leading-snug max-w-xs mb-6">
-            형태와 재료 사이에서,
-            <br />
-            우연한 흐름을 관찰하고 기록합니다.
-          </h1>
+        {/* 모바일 오버레이: 목업처럼 상단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
+        <div className="absolute left-6 top-[32%] flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
+          <p className="label-caption">Ceramic objects by Daeun Lee</p>
           <Link
             href="#collection"
-            className="inline-flex items-center gap-2 self-start border border-white/70 text-white label-caption !text-white px-4 py-2.5"
+            className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5"
           >
-            VIEW WORKS <span aria-hidden>→</span>
+            VIEW SHOP <span aria-hidden>→</span>
           </Link>
         </div>
 
