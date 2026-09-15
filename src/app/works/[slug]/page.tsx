@@ -105,12 +105,7 @@ export default async function WorkDetailPage({
           </tbody>
         </table>
 
-        {/* 전자레인지/식기세척기는 참고 정보 수준이라 스펙 표 대신 작은 텍스트로 */}
-        <p className="mt-3 text-xs text-[var(--color-ink-soft)]">
-          전자레인지 {work.microwaveSafe ? "사용 가능" : "사용 불가"} · 식기세척기{" "}
-          {work.dishwasherSafe ? "사용 가능" : "사용 불가"}
-        </p>
-
+        {/* 전자레인지/식기세척기 안내는 아래 케어 문구에 이미 포함되어 중복 표시하지 않음 */}
         <p className="mt-6 text-xs text-[var(--color-ink-soft)] leading-relaxed">
           {work.careNote}
         </p>
