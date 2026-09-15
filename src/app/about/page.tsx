@@ -29,7 +29,7 @@ const EXHIBITIONS = [
   {
     year: "2019",
     items: [
-      { title: "'일상도예' 판매전 작가 참가", venue: "얀앤홉 갤러리, 위례신도시" },
+      { title: "'일상도예' 판매전 작가 참가", venue: "얀앤홉 갤러리, 위례" },
     ],
   },
   {
