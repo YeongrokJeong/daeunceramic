@@ -88,7 +88,8 @@ export default function CollectionPhotoGrid({ works }: { works: Work[] }) {
               {work.title}
             </p>
             <p className="text-[var(--color-ink-soft)] text-[11px] sm:text-xs leading-snug mt-1">
-              {work.soldOut ? "주문제작" : formatPrice(work.price)}
+              {formatPrice(work.price)}
+              {work.soldOut && " · 주문제작"}
             </p>
           </div>
         </Link>
