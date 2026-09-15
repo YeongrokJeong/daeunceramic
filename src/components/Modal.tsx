@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 // 작은 팝업창(모달). ESC/바깥 클릭으로 닫히고, 열리면 스크롤을 막는다.
+// PageTransition의 페이드인 애니메이션(transform)이 걸린 조상 안에서
+// position:fixed로 렌더링하면, 그 transform이 fixed의 기준(containing
+// block)이 되어버려서 팝업이 진짜 화면이 아니라 스크롤된 문서 위치에
+// "떠버리는" 문제가 생긴다(삼성 인터넷 등에서 확인됨). document.body로
+// 포탈해서 이 조상 밖으로 완전히 빼내 항상 실제 화면 기준으로 고정한다.
 export default function Modal({
   open,
   onClose,
@@ -55,7 +61,7 @@ export default function Modal({
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
       ref={overlayRef}
       className="fixed inset-x-0 top-0 h-[100dvh] z-50 overflow-y-auto flex items-start sm:items-center justify-center bg-black/50 px-4 py-8 sm:py-4"
@@ -83,6 +89,7 @@ export default function Modal({
         </div>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
