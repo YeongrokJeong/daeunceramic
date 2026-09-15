@@ -84,8 +84,8 @@ const rawWorks: WorkInput[] = [
     technique: "Slip casting",
     firing: "Oxidation firing",
     paletteIndex: 4,
-    image: "/works/blue-line-latte-cup.jpg",
-    images: ["/works/blue-line-latte-cup.jpg"],
+    image: "/works/blue-line-latte-cup.png",
+    images: ["/works/blue-line-latte-cup.png"],
     category: "CUPS & MUGS",
   },
   {
