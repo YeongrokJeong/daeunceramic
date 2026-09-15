@@ -1,7 +1,7 @@
 import ExhibitionPhotoGrid from "@/components/ExhibitionPhotoGrid";
 
 export const metadata = {
-  title: "About | Daeun Ceramic",
+  title: "About | DeL Objects",
 };
 
 // 전시 현장/작업 사진(사용자 제공, 실제 사진).

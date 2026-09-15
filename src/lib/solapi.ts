@@ -32,7 +32,7 @@ export async function sendReservationSms(input: ReservationInput) {
 }
 
 function buildMessageText(input: ReservationInput) {
-  const label = input.message ? "[이다은 도자기 제작문의]" : "[이다은 도자기 판매예약]";
+  const label = input.message ? "[DeL Objects 제작문의]" : "[DeL Objects 판매예약]";
   const lines = [
     label,
     `상품: ${input.workTitle}`,

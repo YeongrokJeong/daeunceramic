@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "Works | Daeun Ceramic",
+  title: "Works | DeL Objects",
 };
 
 // SHOP(판매 상품)과 구분되는, 아직 판매하지 않는 실험/진행중 작업 아카이브.

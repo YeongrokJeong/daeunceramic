@@ -18,7 +18,7 @@ export async function generateMetadata({
   const work = getWorkBySlug(slug);
   if (!work) return {};
   return {
-    title: `${work.title} | Daeun Ceramic`,
+    title: `${work.title} | DeL Objects`,
     description: work.shortDescription,
   };
 }

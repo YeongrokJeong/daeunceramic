@@ -2,7 +2,7 @@ import Image from "next/image";
 import { CONTACT_EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/contact";
 
 export const metadata = {
-  title: "Contact | Daeun Ceramic",
+  title: "Contact | DeL Objects",
 };
 
 export default function ContactPage() {

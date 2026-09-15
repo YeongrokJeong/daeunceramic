@@ -15,7 +15,7 @@ export default function SiteFooter() {
   return (
     <footer className="hidden sm:flex px-5 sm:px-8 py-10 sm:flex-row sm:items-end sm:justify-between gap-6 border-t border-[var(--color-line)]">
       <div>
-        <p className="font-logo text-sm uppercase">Daeun Ceramic</p>
+        <p className="font-logo text-sm uppercase">DeL Objects</p>
         <p className="label-caption mt-1">CERAMICS / OBJECTS</p>
       </div>
       <div className="flex gap-4">

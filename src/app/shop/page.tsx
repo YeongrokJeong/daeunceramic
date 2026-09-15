@@ -2,7 +2,7 @@ import CollectionGrid from "@/components/CollectionGrid";
 import { works } from "@/lib/works";
 
 export const metadata = {
-  title: "Shop | Daeun Ceramic",
+  title: "Shop | DeL Objects",
 };
 
 export default function ShopPage() {
