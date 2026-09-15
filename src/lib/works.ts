@@ -188,7 +188,11 @@ const rawWorks: WorkInput[] = [
     firing: "Oxidation firing, 1250°C",
     paletteIndex: 2,
     image: "/works/nebula-cup-l-lavender.png",
-    images: ["/works/nebula-cup-l-lavender.png"],
+    images: [
+      "/works/nebula-cup-l-lavender.png",
+      "/works/nebula-cup-l-lavender-detail.jpg",
+      "/works/nebula-cup-l-lavender-hand.png",
+    ],
     category: "CUPS & MUGS",
   },
   {
