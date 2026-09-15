@@ -12,7 +12,7 @@ export default function Home() {
         <HeroCarousel />
 
         {/* 모바일 오버레이: 하단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
-        <div className="absolute left-6 bottom-16 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
+        <div className="absolute left-6 bottom-4 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
           <ScrollToCollectionButton className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5">
             VIEW SHOP <span aria-hidden>→</span>
           </ScrollToCollectionButton>
