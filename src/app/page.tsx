@@ -11,9 +11,11 @@ export default function Home() {
       <section className="relative h-[100svh] sm:h-[92vh] w-full overflow-hidden">
         <HeroCarousel />
 
-        {/* 모바일 오버레이: 목업처럼 상단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
-        <div className="absolute left-6 top-[32%] flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
-          <p className="label-caption">Ceramic objects by Daeun Lee</p>
+        {/* 모바일 오버레이: 하단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
+        <div className="absolute left-6 bottom-16 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
+          <p className="label-caption !text-[var(--color-ink)]">
+            Ceramic objects by Daeun Lee
+          </p>
           <Link
             href="#collection"
             className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5"
