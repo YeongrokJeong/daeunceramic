@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CollectionGrid from "@/components/CollectionGrid";
+import HeroCarousel from "@/components/HeroCarousel";
 import { works } from "@/lib/works";
 
 export default function Home() {
@@ -17,14 +18,7 @@ export default function Home() {
           sizes="100vw"
           className="object-cover sm:hidden"
         />
-        <Image
-          src="/works/banner-desktop.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover hidden sm:block"
-        />
+        <HeroCarousel />
 
         {/* 모바일 오버레이: 하단이 어두워지는 그라디언트 + 문구/버튼 */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent sm:hidden" />
@@ -72,10 +66,6 @@ export default function Home() {
           and Chance.
         </p>
 
-        <div className="hidden sm:flex items-center gap-3 absolute left-8 lg:left-14 bottom-8">
-          <span className="label-caption !text-white/80">01 / 03</span>
-          <span className="w-8 border-t border-white/50" />
-        </div>
         <span className="hidden sm:block label-caption !text-white/80 absolute right-8 lg:right-14 bottom-8">
           SEOUL, KOREA
         </span>

@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 // 그 외 페이지에서는 항상 고정된 흰 배경 헤더.
 const NAV_LINKS = [
   { href: "/", label: "SHOP" },
+  { href: "/works", label: "WORKS" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
@@ -55,8 +56,8 @@ export default function SiteHeader() {
               href={link.href}
               className={
                 isHome
-                  ? "label-caption transition-colors hover:text-[var(--color-ink)] sm:!text-white/85 sm:hover:!text-white"
-                  : "label-caption transition-colors hover:text-[var(--color-ink)]"
+                  ? "label-caption transition-colors !text-[var(--color-ink)] hover:opacity-70 sm:!text-white/85 sm:hover:!text-white"
+                  : "label-caption transition-colors !text-[var(--color-ink)] hover:opacity-70"
               }
             >
               {link.label}
