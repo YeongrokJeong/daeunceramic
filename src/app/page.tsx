@@ -1,21 +1,22 @@
-import CollectionGrid from "@/components/CollectionGrid";
+import Link from "next/link";
 import HeroCarousel from "@/components/HeroCarousel";
-import ScrollToCollectionButton from "@/components/ScrollToCollectionButton";
-import { works } from "@/lib/works";
 
 export default function Home() {
   return (
     <main className="flex-1">
-      {/* 모바일: 풀스크린 히어로(헤더가 위에 투명하게 겹쳐짐) + 하단 문구/버튼.
-          sm 이상: 대형 풀스크린 히어로 + 중앙 워드마크/카피, 좌측·하단 코너 캡션. */}
-      <section className="relative h-[100svh] sm:h-[92vh] w-full overflow-hidden">
+      {/* 홈은 풀스크린 히어로 한 화면으로만 구성(스크롤 없음).
+          실제 상품 목록은 /shop 페이지. */}
+      <section className="relative h-[100svh] w-full overflow-hidden">
         <HeroCarousel />
 
         {/* 모바일 오버레이: 하단쪽 좌측에 캡션 + 버튼(어두운 톤) */}
         <div className="absolute left-6 bottom-4 flex flex-col items-start gap-4 max-w-[70%] sm:hidden">
-          <ScrollToCollectionButton className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5">
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 border border-[var(--color-ink)]/60 text-[var(--color-ink)] label-caption !text-[var(--color-ink)] px-4 py-2.5"
+          >
             VIEW SHOP <span aria-hidden>→</span>
-          </ScrollToCollectionButton>
+          </Link>
           <p className="label-caption !text-[var(--color-ink)]">
             Ceramic objects by Daeun Lee
           </p>
@@ -32,9 +33,12 @@ export default function Home() {
             CERAMIC OBJECTS BY DAEUN LEE
           </p>
           <div className="w-10 border-t border-white/50 my-1" />
-          <ScrollToCollectionButton className="label-caption !text-white hover:!text-white/80 transition-colors">
+          <Link
+            href="/shop"
+            className="label-caption !text-white hover:!text-white/80 transition-colors"
+          >
             EXPLORE OBJECTS <span aria-hidden>→</span>
-          </ScrollToCollectionButton>
+          </Link>
         </div>
 
         <p className="hidden sm:block absolute left-8 lg:left-14 top-1/2 -translate-y-1/2 font-display text-white text-base leading-relaxed">
@@ -48,13 +52,6 @@ export default function Home() {
         <span className="hidden sm:block label-caption !text-white/80 absolute right-8 lg:right-14 bottom-8">
           SEOUL, KOREA
         </span>
-      </section>
-
-      <section id="collection" className="scroll-mt-20 px-5 sm:px-8 py-8 sm:py-12 max-w-5xl mx-auto">
-        <p className="font-display text-2xl sm:text-3xl">SHOP</p>
-        <div className="mt-8">
-          <CollectionGrid works={works} />
-        </div>
       </section>
     </main>
   );

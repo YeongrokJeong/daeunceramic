@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 //   - PC: 헤더 뒤에 은은한 어두운 그라디언트를 깔고 로고/텍스트를 흰색으로 반전
 // 그 외 페이지에서는 항상 고정된 흰 배경 헤더(로고/텍스트는 어두운 톤 고정).
 const NAV_LINKS = [
-  { href: "/", label: "SHOP" },
+  { href: "/shop", label: "SHOP" },
   { href: "/works", label: "WORKS" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
