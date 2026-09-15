@@ -68,6 +68,7 @@ export default async function WorkDetailPage({
         <h1 className="font-display text-2xl sm:text-3xl leading-snug">
           {work.title}
         </h1>
+        <p className="label-caption mt-1">{work.titleEn}</p>
       </div>
 
       <Suspense fallback={<div className="mt-5 aspect-square w-full bg-[var(--color-bg-soft)]" />}>

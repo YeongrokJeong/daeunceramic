@@ -57,8 +57,9 @@ const rawWorks: WorkInput[] = [
     price: 35000,
     shortDescription: "크리스탈 글레이즈 라떼컵",
     description:
-      "슬립캐스팅으로 성형해 산화소성한 라떼컵입니다. 투명유 위에 크리스탈 글레이즈를 더해 결정이 흐르듯 번지는 무늬를 냈어요. 무늬는 제품마다 조금씩 달라요.",
+      "따뜻한 라떼 한 잔 하기 좋은 작은 라떼컵입니다. 투명유 위에 크리스탈 글레이즈를 더해 결정이 흐르듯 번지는 무늬를 냈어요. 무늬는 제품마다 조금씩 달라요.",
     dimensions: "Ø 80 × H 80 mm",
+    capacity: "약 200 ml",
     glaze: "Clear glaze + crystal glaze",
     material: "Porcelain",
     technique: "Slip casting",
@@ -77,9 +78,10 @@ const rawWorks: WorkInput[] = [
     price: 35000,
     shortDescription: "핸드드로잉 무늬 라떼컵",
     description:
-      "슬립캐스팅으로 성형해 산화소성한 라떼컵입니다. 손으로 한 줄씩 그려 넣은 '핸드드로잉' 무늬를 넣었어요. 무늬는 제품마다 조금씩 달라요.",
+      "따뜻한 라떼 한 잔 하기 좋은 작은 라떼컵입니다. 투명 매트 유약 위에 손으로 한 줄씩 그려 넣은 '핸드드로잉' 무늬를 넣었어요. 무늬는 제품마다 조금씩 달라요.",
     dimensions: "Ø 80 × H 80 mm",
-    glaze: "핸드드로잉",
+    capacity: "약 200 ml",
+    glaze: "Clear matte glaze",
     material: "Porcelain",
     technique: "Slip casting",
     firing: "Oxidation firing",
