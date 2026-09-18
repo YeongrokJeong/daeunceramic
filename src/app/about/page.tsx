@@ -64,11 +64,18 @@ export default function AboutPage() {
         <p className="font-display text-lg">이다은 | Daeun Lee</p>
         <p className="label-caption mt-1">CERAMIC ARTIST</p>
 
-        <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink)]">
-          디지털 기술과 흙이 만나는 지점을 탐구합니다. 정밀하게 설계한
-          형태에 흙과 색이 만들어내는 우연한 흐름, 손으로 그린 선을
-          더하며 기술과 수공예가 어우러지는 방식을 찾아갑니다.
-        </p>
+        <div className="mt-6 space-y-4 text-sm leading-relaxed text-[var(--color-ink)]">
+          <p>
+            흙과 색이 흐르는 순간에는 의도만으로 만들 수 없는 형태가
+            생겨납니다.
+          </p>
+          <p>
+            통제와 우연 사이에서 번지고 겹쳐진 흔적을 관찰하고,
+            <br />
+            그 순간을 하나의 형태로 남깁니다.
+          </p>
+          <p>완벽하게 반복할 수 없기에, 모든 작업은 서로 다른 하나가 됩니다.</p>
+        </div>
 
         <div className="mt-8 border-t border-[var(--color-line)] pt-6">
           <p className="label-caption">EXHIBITIONS</p>
