@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Noto_Serif_KR, Lora } from "next/font/google";
+import Script from "next/script";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
@@ -25,6 +26,10 @@ const wordmark = Lora({
   weight: ["400"],
   style: ["italic"],
 });
+
+// Google Analytics 4 측정 ID(공개값). 로컬 개발 중 방문이 통계에 섞이지 않도록
+// 프로덕션 빌드에서만 태그를 넣는다.
+const GA_MEASUREMENT_ID = "G-EVT9R1XSQY";
 
 const SITE_URL = "https://daeunceramic.vercel.app";
 const SITE_DESCRIPTION =
@@ -71,6 +76,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <PageTransition>{children}</PageTransition>
         <SiteFooter />
         <ScrollToTopButton />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
