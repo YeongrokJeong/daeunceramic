@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -47,6 +48,10 @@ export default function ReservationForm({
       }
 
       setStatus("success");
+      trackEvent("reservation_complete", {
+        work_slug: workSlug,
+        mode: isInquiry ? "inquiry" : "purchase",
+      });
       form.reset();
     } catch (err) {
       setStatus("error");
